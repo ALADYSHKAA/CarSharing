@@ -90,6 +90,36 @@ namespace CarSharing
                 }
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (button3.Text == "Показать")
+            {
+                String insertValueDateOfStart = dateTimePicker1.Value.ToString();
+                String insertValueDateOfEnd = dateTimePicker2.Value.ToString();
+                GetData("SELECT * FROM ViewProis WHERE TimeOfStart BETWEEN '" + insertValueDateOfStart + "'  AND '" + insertValueDateOfEnd + "'");
+                button3.Text = "Отмена";
+            }
+            else if (button3.Text == "Отмена")
+            {
+                button3.Text = "Показать";
+
+                GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            con = new SqlConnection(connectionString);
+            con.Open();
+            string insertValue = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+            bool status = true;
+            string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
+                             status, insertValue);
+            SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
+            updPovr.ExecuteNonQuery();
+            GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+        }
     }
 
 

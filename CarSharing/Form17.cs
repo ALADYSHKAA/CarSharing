@@ -187,7 +187,7 @@ namespace CarSharing
                 else
                 {
                     string who;
-                    who = "Администаратор: ";
+                    who = "Администратор: ";
                     string name = dt.Rows[i]["Text"].ToString();
 
                     richTextBox1.Text = who  + name + "\r\n" + richTextBox1.Text;

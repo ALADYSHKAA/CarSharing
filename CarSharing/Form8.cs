@@ -224,7 +224,7 @@ namespace CarSharing
                 SqlCommand updUserStatusSql = new SqlCommand(updUserStatus, con);
                 updUserStatusSql.ExecuteNonQuery();
                 con.Close();
-
+                richTextBox1.Text = "";
                 Form8_Load(sender, e);
             }
             else if(button2.Text == "Заблокировать пользователя")
