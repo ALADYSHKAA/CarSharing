@@ -75,7 +75,10 @@ namespace CarSharing
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           if(Convert.ToString(dataGridView1.CurrentRow.Cells[8].Value) == "Обработано")
+            {
+                button2.Enabled = false;
+            }
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -114,11 +117,48 @@ namespace CarSharing
             con.Open();
             string insertValue = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
             bool status = true;
-            string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
-                             status, insertValue);
-            SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
-            updPovr.ExecuteNonQuery();
-            GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+            string statusProisSelect = "SELECT Status FROM Proishestviya Where idProischestviya = '" + insertValue + " '";
+            SqlCommand statusProis = new SqlCommand(statusProisSelect, con);
+            bool statusProisBool = (bool)(statusProis).ExecuteScalar();
+            if (statusProisBool == false)
+            {
+                string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
+                                 status, insertValue);
+                SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
+                updPovr.ExecuteNonQuery();
+                GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+            }
+            else if(statusProisBool == true)
+            {
+                status = false;
+                string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
+                                status, insertValue);
+                SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
+                updPovr.ExecuteNonQuery();
+                GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+            }
+            con.Close();
+        }
+
+        private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (Convert.ToString(dataGridView1.CurrentRow.Cells[8].Value) == "Обработано")
+            {
+                button2.Enabled = false;
+            }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToString(dataGridView1.CurrentRow.Cells[8].Value) == "Обработано")
+            {
+                button2.Enabled = false;
+            }
         }
     }
 

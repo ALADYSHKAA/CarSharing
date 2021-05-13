@@ -23,6 +23,7 @@ namespace CarSharing
         Form14 f14;
         Form18 f18;
         Form20 f20;
+        Form21 f21;
 
         public Form5()
         {
@@ -145,6 +146,12 @@ namespace CarSharing
         {
             f20 = new Form20();
             f20.ShowDialog();
+        }
+
+        private void поврежденияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            f21 = new Form21();
+            f21.ShowDialog();
         }
     }
 }

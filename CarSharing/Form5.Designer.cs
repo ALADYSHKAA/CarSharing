@@ -131,6 +131,7 @@ namespace CarSharing
             this.поврежденияToolStripMenuItem.Name = "поврежденияToolStripMenuItem";
             this.поврежденияToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.поврежденияToolStripMenuItem.Text = "Повреждения";
+            this.поврежденияToolStripMenuItem.Click += new System.EventHandler(this.поврежденияToolStripMenuItem_Click);
             // 
             // Form5
             // 
