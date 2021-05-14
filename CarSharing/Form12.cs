@@ -44,9 +44,10 @@ namespace CarSharing
             comboBox2.Size = new Size(121, 26);
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             textBox1.Enabled = false;
             textBox2.Enabled = false;
-            textBox3.Enabled = false;
+            comboBox4.Enabled = false;
             textBox4.Enabled = false;
             comboBox1.Enabled = false;
             comboBox2.Enabled = false;
@@ -99,7 +100,7 @@ namespace CarSharing
             deleteTarif = false;
             textBox1.Enabled = true;
             textBox2.Enabled = true;
-            textBox3.Enabled = true;
+            comboBox4.Enabled = true;
             textBox4.Enabled = true;
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
@@ -111,7 +112,7 @@ namespace CarSharing
             button2.Visible = true;
             textBox1.Text = "";
             textBox2.Text = "";
-            textBox3.Text = "";
+            comboBox4.Text = "";
             textBox4.Text = "";
             comboBox1.Text = " ";
             comboBox2.Text = " ";
@@ -129,13 +130,13 @@ namespace CarSharing
             button2.Visible = true;
             textBox1.Text = "";
             textBox2.Text = "";
-            textBox3.Text = "";
+            comboBox4.Text = "";
             textBox4.Text = "";
             comboBox1.Text = " ";
             comboBox2.Text = " ";
             textBox1.Enabled = false;
             textBox2.Enabled = false;
-            textBox3.Enabled = false;
+            comboBox4.Enabled = false;
             textBox4.Enabled = false;
             comboBox1.Enabled = false;
             comboBox2.Enabled = false;
@@ -148,7 +149,7 @@ namespace CarSharing
             deleteTarif = false;
             textBox1.Enabled = true;
             textBox2.Enabled = true;
-            textBox3.Enabled = true;
+            comboBox4.Enabled = true;
             textBox4.Enabled = true;
             comboBox1.Enabled = true;
             comboBox2.Enabled = true;
@@ -156,7 +157,7 @@ namespace CarSharing
             label2.ForeColor = Color.Blue;
             textBox1.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
             textBox2.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
-            textBox3.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
+            comboBox4.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
             textBox4.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value);
             comboBox1.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
             comboBox2.Text = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
@@ -214,7 +215,7 @@ namespace CarSharing
                 deleteTarif = false;
                 String insertValueNazvanie = textBox1.Text;
                 String insertValueTip = textBox2.Text;
-                String insertValueTime = textBox3.Text;
+                String insertValueTime = comboBox4.Text;
                 String insertValueCena = textBox4.Text;
                 String insertValueKlass = comboBox1.Text;
                 String insertValueTypeOfKlass = comboBox2.Text;
@@ -236,11 +237,11 @@ namespace CarSharing
                     return;
                 }
 
-                if (textBox3.Text.Length < 3)
+                if (comboBox4.Text.Length == 0)
                 {
-                    label2.Text = "Время тарифа должно быть не короче 3 символов";
+                    label2.Text = "Пожалуйста, выберите время тарифа ";
                     label2.ForeColor = Color.Orange;
-                    label2.Location = new Point(270, 551);
+                    label2.Location = new Point(280, 551);
                     return;
                 }
 
@@ -279,17 +280,19 @@ namespace CarSharing
                 con.Close();
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
-                textBox3.Enabled = false;
+              //  textBox3.Enabled = false;
                 textBox4.Enabled = false;
                 comboBox1.Enabled = false;
                 comboBox2.Enabled = false;
+                comboBox4.Enabled = false;
                 textBox1.Text = "";
                 textBox2.Text = "";
-                textBox3.Text = "";
+              //  textBox3.Text = "";
                 textBox4.Text = "";
                 comboBox1.Text = " ";
                 comboBox2.Text = " ";
                 label2.Text = "";
+                comboBox4.Text = "";
                 button2.Visible = false;
                 label2.Location = new Point(192, 551);
                 GetData("Select * From ViewTarif");
@@ -301,7 +304,7 @@ namespace CarSharing
                 deleteTarif = false;
                 String insertValueNazvanie = textBox1.Text;
                 String insertValueTip = textBox2.Text;
-                String insertValueTime = textBox3.Text;
+                String insertValueTime = comboBox4.Text;
                 String insertValueCena = textBox4.Text;
                 String insertValueKlass = comboBox1.Text;
                 String insertValueTypeOfKlass = comboBox2.Text;
@@ -324,13 +327,7 @@ namespace CarSharing
                     return;
                 }
 
-                if (textBox3.Text.Length < 3)
-                {
-                    label2.Text = "Время тарифа должно быть не короче 3 символов";
-                    label2.ForeColor = Color.Orange;
-                    label2.Location = new Point(270, 551);
-                    return;
-                }
+               
 
                 if (textBox4.Text.Length == 0)
                 {
@@ -355,6 +352,13 @@ namespace CarSharing
                     label2.Location = new Point(280, 551);
                     return;
                 }
+                if (comboBox4.Text.Length == 0)
+                {
+                    label2.Text = "Пожалуйста, выберите время тарифа ";
+                    label2.ForeColor = Color.Orange;
+                    label2.Location = new Point(280, 551);
+                    return;
+                }
                 string idKlassaSelect = "SELECT idKlassa FROM KlassAvto Where Klass ='" + insertValueKlass + "' AND Tip = '" + insertValueTypeOfKlass + " '";
                 SqlCommand idKlassa = new SqlCommand(idKlassaSelect, con);
                 Int32 idKlassaInt = (Int32)(idKlassa).ExecuteScalar();
@@ -366,16 +370,18 @@ namespace CarSharing
                 con.Close();
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
-                textBox3.Enabled = false;
+             //   textBox3.Enabled = false;
                 textBox4.Enabled = false;
                 comboBox1.Enabled = false;
                 comboBox2.Enabled = false;
+                comboBox4.Enabled = false;
                 textBox1.Text = "";
                 textBox2.Text = "";
-                textBox3.Text = "";
+              //  textBox3.Text = "";
                 textBox4.Text = "";
                 comboBox1.Text = " ";
                 comboBox2.Text = " ";
+                comboBox4.Text = "";
                 label2.Text = "";
                 button2.Visible = false;
                 label2.Location = new Point(192, 551);
@@ -403,13 +409,13 @@ namespace CarSharing
                     con.Close();
                     textBox1.Enabled = false;
                     textBox2.Enabled = false;
-                    textBox3.Enabled = false;
+                    comboBox4.Enabled = false;
                     textBox4.Enabled = false;
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = false;
                     textBox1.Text = "";
                     textBox2.Text = "";
-                    textBox3.Text = "";
+                    comboBox4.Text = "";
                     textBox4.Text = "";
                     comboBox1.Text = " ";
                     comboBox2.Text = " ";

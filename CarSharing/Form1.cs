@@ -167,11 +167,11 @@ namespace CarSharing
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            this.Size = new Size(0, 0);
             Form5 f5 = new Form5();
             f5.ShowDialog();
             Form1_Load_1(sender, e);
-
+            this.Size = new Size(1070, 769);
 
 
         }
@@ -248,8 +248,10 @@ namespace CarSharing
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Size = new Size(0, 0);
             f15 = new Form15();
             f15.ShowDialog();
+            this.Size = new Size(1070, 769);
         }
 
         private void button7_Click(object sender, EventArgs e)
