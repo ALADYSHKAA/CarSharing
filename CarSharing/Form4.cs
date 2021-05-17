@@ -29,6 +29,8 @@ namespace CarSharing
             textBox5.Enabled = false;
             textBox2.Select();
             button3.Enabled = false;
+            textBox5.UseSystemPasswordChar = true;
+            textBox8.UseSystemPasswordChar = true;
         }
 
         
@@ -208,7 +210,7 @@ namespace CarSharing
                 textBox9.Enabled = false;
                 textBox8.Enabled = false;
                 button4.Enabled = false;
-                button5.Enabled = true;
+                
                 textBox5.Enabled = false;
             }
 
@@ -345,6 +347,29 @@ namespace CarSharing
             button3.Enabled = false;
             checkInsert = true;
             closing = true;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.CheckState == CheckState.Checked)
+            {
+                textBox5.UseSystemPasswordChar = false;
+                textBox8.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox5.UseSystemPasswordChar = true;
+                textBox8.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.CheckState == CheckState.Checked)
+            {
+                button5.Enabled = true;
+                checkBox1.Enabled = false;
+            }
         }
     }
     
