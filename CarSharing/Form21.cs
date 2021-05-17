@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,14 @@ namespace CarSharing
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         String connectionString = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
                   "Integrated Security=True";
+        Logger logger;
+        CurrentMethod cm;
+
         public Form21()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
@@ -43,7 +49,8 @@ namespace CarSharing
         {
             try
             {
-
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
                 dataGridView1.AutoGenerateColumns = true;
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
@@ -62,9 +69,11 @@ namespace CarSharing
                 // Resize the DataGridView columns to fit the newly loaded content.
 
             }
-            catch (SqlException e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -88,11 +97,15 @@ namespace CarSharing
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             string query;
             query = string.Format("SELECT * FROM ViewPovr WHERE GosNomer LIKE '{0}%'", textBox1.Text);
             GetData(query);
@@ -100,27 +113,38 @@ namespace CarSharing
 
         private void button2_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection(connectionString);
-            con.Open();
-            string insertValue = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
-            bool status = true;
-            string statusPovrSelect = "SELECT Status FROM ViewPovr Where idPovrezdeniya = '" + insertValue + " '";
-            SqlCommand statusPovr = new SqlCommand(statusPovrSelect, con);
-            bool statusPovrBool = (bool)(statusPovr).ExecuteScalar();
-            if (statusPovrBool == false)
+            try
             {
-                string sqlUpdatePovr = string.Format("UPDATE Povrezdeniya SET Status = '{0}'  WHERE idPovrezdeniya = {1}",
-                                 status, insertValue);
-                SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
-                updPovr.ExecuteNonQuery();
-                GetData("SELECT * FROM ViewPovr ORDER BY GosNomer");
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                con = new SqlConnection(connectionString);
+                con.Open();
+                string insertValue = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                bool status = true;
+                string statusPovrSelect = "SELECT Status FROM ViewPovr Where idPovrezdeniya = '" + insertValue + " '";
+                SqlCommand statusPovr = new SqlCommand(statusPovrSelect, con);
+                bool statusPovrBool = (bool)(statusPovr).ExecuteScalar();
+                if (statusPovrBool == false)
+                {
+                    string sqlUpdatePovr = string.Format("UPDATE Povrezdeniya SET Status = '{0}'  WHERE idPovrezdeniya = {1}",
+                                     status, insertValue);
+                    SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
+                    updPovr.ExecuteNonQuery();
+                    GetData("SELECT * FROM ViewPovr ORDER BY GosNomer");
+                }
+                else if (statusPovrBool == true)
+                {
+                    MessageBox.Show("Данное повреждение было уже отремонтировано.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                con.Close();
             }
-            else if (statusPovrBool == true)
+            catch(Exception ex)
             {
-                MessageBox.Show("Данное повреждение было уже отремонтировано.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
-            con.Close();
         }
     }
 }

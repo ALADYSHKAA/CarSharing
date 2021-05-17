@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,10 +22,13 @@ namespace CarSharing
         bool insertAvto;
         bool checkAvto;
         Form11 f11;
-
+        Logger logger;
+        CurrentMethod cm;
         public Form10()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
@@ -72,7 +76,8 @@ namespace CarSharing
         {
             try
             {
-
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
                 dataGridView1.AutoGenerateColumns = true;
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
@@ -91,11 +96,11 @@ namespace CarSharing
                 // Resize the DataGridView columns to fit the newly loaded content.
 
             }
-            catch (SqlException)
+            catch (Exception ex)
             {
-                MessageBox.Show("To run this example, replace the value of the " +
-                    "connectionString variable with a connection string that is " +
-                    "valid for your system.");
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
@@ -119,6 +124,8 @@ namespace CarSharing
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             insertAvto = true;
             checkAvto = false;
 
@@ -156,7 +163,9 @@ namespace CarSharing
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(insertAvto == true)
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
+            if (insertAvto == true)
             {
                 insertAvto = false;
                 label14.Visible = false;
@@ -193,20 +202,31 @@ namespace CarSharing
 
         private void Form10_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(connectionString);
-            con.Open();
-            string query;
-            query = ("SELECT DISTINCT  Klass FROM KlassAvto ");
-            SqlCommand cmd1 = new SqlCommand(query, con);
-            DataTable tbl1 = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd1);
-            da.Fill(tbl1);
-            this.comboBox2.DataSource = tbl1;
-            this.comboBox2.DisplayMember = "Klass";// столбец для отображения
-            //this.comboBox2.ValueMember = "idKlassa";//столбец с id
-            this.comboBox2.SelectedIndex = -1;
+            try
+            {
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                con = new SqlConnection(connectionString);
+                con.Open();
+                string query;
+                query = ("SELECT DISTINCT  Klass FROM KlassAvto ");
+                SqlCommand cmd1 = new SqlCommand(query, con);
+                DataTable tbl1 = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd1);
+                da.Fill(tbl1);
+                this.comboBox2.DataSource = tbl1;
+                this.comboBox2.DisplayMember = "Klass";// столбец для отображения
+                                                       //this.comboBox2.ValueMember = "idKlassa";//столбец с id
+                this.comboBox2.SelectedIndex = -1;
 
-            con.Close();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
+            }
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -216,16 +236,27 @@ namespace CarSharing
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query;
-            query = String.Format("SELECT  Tip FROM KlassAvto Where Klass = '" + comboBox2.Text + " '", con); 
-            SqlCommand cmd1 = new SqlCommand(query, con);
-            DataTable tbl1 = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd1);
-            da.Fill(tbl1);
-            this.comboBox3.DataSource = tbl1;
-            this.comboBox3.DisplayMember = "Tip";// столбец для отображения
-            //this.comboBox2.ValueMember = idKlassa";//столбец с id
-            this.comboBox3.SelectedIndex = -1;
+            try
+            {
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                string query;
+                query = String.Format("SELECT  Tip FROM KlassAvto Where Klass = '" + comboBox2.Text + " '", con);
+                SqlCommand cmd1 = new SqlCommand(query, con);
+                DataTable tbl1 = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd1);
+                da.Fill(tbl1);
+                this.comboBox3.DataSource = tbl1;
+                this.comboBox3.DisplayMember = "Tip";// столбец для отображения
+                                                     //this.comboBox2.ValueMember = idKlassa";//столбец с id
+                this.comboBox3.SelectedIndex = -1;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
+            }
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -240,6 +271,8 @@ namespace CarSharing
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             if (comboBox5.Text == "Гос номеру")
             {
                 string query;
@@ -274,6 +307,8 @@ namespace CarSharing
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             if (checkBox1.CheckState == CheckState.Checked && textBox7.TextLength == 0)
             {
                 if (toolStripComboBox1.Text == "Исправные")
@@ -302,178 +337,189 @@ namespace CarSharing
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (checkAvto == true)
+            try
             {
-                Program.getIdAvto = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
-                f11 = new Form11();
-                f11.ShowDialog();
-                GetData("select * from ViewAvto");
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
 
+                if (checkAvto == true)
+                {
+                    Program.getIdAvto = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                    f11 = new Form11();
+                    f11.ShowDialog();
+                    GetData("select * from ViewAvto");
+
+                }
+                else if (insertAvto == true)
+                {
+                    String insertValueMarka = textBox1.Text;
+                    String insertValueNazvanie = textBox2.Text;
+                    String insertValueGosNumber = textBox3.Text;
+                    String insertValueYear = comboBox1.Text;
+                    String insertValueVin = textBox4.Text;
+                    String insertValueProbeg = textBox5.Text;
+                    String insertValueKlass = comboBox2.Text;
+                    String insertValueTipKlassa = comboBox3.Text;
+                    String insertValueTipPolica = comboBox4.Text;
+                    String insertValueNumberPolica = textBox6.Text;
+                    String insertValueStatus = "1";
+
+                    if (textBox1.Text.Length == 0)
+                    {
+                        label14.Text = "Марка автомобиля не может быть пустой";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+                    if (textBox2.Text.Length == 0)
+                    {
+                        label14.Text = "Название автомобиля не может быть пустым";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+                    if (textBox3.Text.Length != 9)
+                    {
+                        label14.Text = "Гос Номер должен состоять из 9 знаков";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+                    if (comboBox1.Text.Length == 0)
+                    {
+                        label14.Text = "Пожалуйста, выберете год выпуска";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+                    if (textBox4.Text.Length != 17)
+                    {
+                        label14.Text = "Вин Номер должен состоять из 17 символов";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(500, 799);
+                        return;
+                    }
+                    if (textBox5.Text.Length == 0)
+                    {
+                        label14.Text = "Пробег не может быть пустым";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(550, 799);
+                        return;
+                    }
+                    if (comboBox2.Text.Length == 0)
+                    {
+                        label14.Text = "Пожалуйста, выберете Класс автомобиля";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+                    if (comboBox3.Text.Length == 0)
+                    {
+                        label14.Text = "Пожалуйста, выберете Тип класса автомобиля";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+                    if (comboBox4.Text.Length == 0)
+                    {
+                        label14.Text = "Пожалуйста, выберете Тип полиса автомобиля";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+                    if (textBox6.Text.Length != 10)
+                    {
+                        label14.Text = "Номер полиса должен состоять из 10 знаков";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(535, 799);
+                        return;
+                    }
+
+
+                    con = new SqlConnection(connectionString);
+                    con.Open();
+
+                    SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Avto WHERE GosNomer = '" + insertValueGosNumber + " '", con);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    if (dt.Rows[0][0].ToString() != "0")
+                    {
+                        label14.Text = "К сожалению, данный Гос номер уже существует в Базе данных";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(420, 799);
+                        return;
+                    }
+
+                    SqlDataAdapter sda1 = new SqlDataAdapter("Select Count (*) From Avto WHERE VIN = '" + insertValueVin + " '", con);
+                    DataTable dt1 = new DataTable();
+                    sda1.Fill(dt1);
+
+                    if (dt1.Rows[0][0].ToString() != "0")
+                    {
+                        label14.Text = "К сожалению, данный Вин номер уже существует в Базе данных";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(420, 799);
+                        return;
+                    }
+
+                    SqlDataAdapter sda2 = new SqlDataAdapter("Select Count (*) From Strahovka WHERE NomerPolica = '" + insertValueNumberPolica + " '", con);
+                    DataTable dt2 = new DataTable();
+                    sda2.Fill(dt2);
+
+                    if (dt2.Rows[0][0].ToString() != "0")
+                    {
+                        label14.Text = "К сожалению, данный Номер полиса уже есть в Базе данных";
+                        label14.ForeColor = Color.Orange;
+                        label14.Location = new Point(420, 799);
+                        return;
+                    }
+
+                    string idKlassaSelect = "SELECT idKlassa FROM KlassAvto Where Klass ='" + insertValueKlass + "' AND Tip = '" + insertValueTipKlassa + " '";
+                    SqlCommand idKlassa = new SqlCommand(idKlassaSelect, con);
+                    Int32 idKlassaInt = (Int32)(idKlassa).ExecuteScalar();
+
+                    string sqlInsertNewPolic = string.Format("INSERT INTO Strahovka (TipPolica, NomerPolica ) " +
+                        " VALUES ('{0}', '{1}')", insertValueTipPolica, insertValueNumberPolica);
+                    SqlCommand insNewPolic = new SqlCommand(sqlInsertNewPolic, con);
+                    insNewPolic.ExecuteNonQuery();
+
+                    string idPolicaSelect = "SELECT KodPolica FROM Strahovka Where TipPolica ='" + insertValueTipPolica + "' AND NomerPolica = '" + insertValueNumberPolica + " '";
+                    SqlCommand idPolica = new SqlCommand(idPolicaSelect, con);
+                    Int32 idPolicaInt = (Int32)(idPolica).ExecuteScalar();
+
+                    string sqlInsertNewAvto = string.Format("INSERT INTO Avto (Marka, Nazvanie, GosNomer, GodVipyska, VIN, Probeg, idKlassa, KodPolica, StatusDostypa ) " +
+                        " VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, {7}, '{8}' )", insertValueMarka, insertValueNazvanie, insertValueGosNumber, insertValueYear, insertValueVin, insertValueProbeg,
+                       idKlassaInt, idPolicaInt, insertValueStatus);
+                    SqlCommand insNewAvto = new SqlCommand(sqlInsertNewAvto, con);
+                    insNewAvto.ExecuteNonQuery();
+                    con.Close();
+
+                    GetData("select * from ViewAvto");
+                    label14.Text = "";
+                    label14.Location = new Point(411, 799);
+                    insertAvto = false;
+                    textBox1.Enabled = false;
+                    textBox2.Enabled = false;
+                    textBox3.Enabled = false;
+                    textBox4.Enabled = false;
+                    textBox5.Enabled = false;
+                    textBox6.Enabled = false;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = false;
+                    comboBox3.Enabled = false;
+                    comboBox4.Enabled = false;
+                    button2.Text = "Подробная информация";
+                    button2.Size = new Size(200, 29);
+                    button2.Location = new Point(1150, 799);
+                    checkAvto = true;
+                }
             }
-           else if(insertAvto == true)
+            catch(Exception ex)
             {
-                String insertValueMarka = textBox1.Text;
-                String insertValueNazvanie = textBox2.Text;
-                String insertValueGosNumber = textBox3.Text;
-                String insertValueYear = comboBox1.Text;
-                String insertValueVin = textBox4.Text;
-                String insertValueProbeg = textBox5.Text;
-                String insertValueKlass = comboBox2.Text;
-                String insertValueTipKlassa = comboBox3.Text;
-                String insertValueTipPolica = comboBox4.Text;
-                String insertValueNumberPolica = textBox6.Text;
-                String insertValueStatus = "1";
-
-                if (textBox1.Text.Length == 0)
-                {
-                    label14.Text = "Марка автомобиля не может быть пустой";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                if (textBox2.Text.Length == 0)
-                {
-                    label14.Text = "Название автомобиля не может быть пустым";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                if (textBox3.Text.Length != 9)
-                {
-                    label14.Text = "Гос Номер должен состоять из 9 знаков";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                if (comboBox1.Text.Length == 0)
-                {
-                    label14.Text = "Пожалуйста, выберете год выпуска";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                if (textBox4.Text.Length != 17)
-                {
-                    label14.Text = "Вин Номер должен состоять из 17 символов";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(500, 799);
-                    return;
-                }
-                if (textBox5.Text.Length == 0)
-                {
-                    label14.Text = "Пробег не может быть пустым";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(550, 799);
-                    return;
-                }
-                if (comboBox2.Text.Length == 0)
-                {
-                    label14.Text = "Пожалуйста, выберете Класс автомобиля";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                if (comboBox3.Text.Length == 0)
-                {
-                    label14.Text = "Пожалуйста, выберете Тип класса автомобиля";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                if (comboBox4.Text.Length == 0)
-                {
-                    label14.Text = "Пожалуйста, выберете Тип полиса автомобиля";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                if (textBox6.Text.Length != 10)
-                {
-                    label14.Text = "Номер полиса должен состоять из 10 знаков";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(535, 799);
-                    return;
-                }
-                
-
-                con = new SqlConnection(connectionString);
-                con.Open();
-
-                SqlDataAdapter sda = new SqlDataAdapter("Select Count (*) From Avto WHERE GosNomer = '" + insertValueGosNumber + " '", con);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                if (dt.Rows[0][0].ToString() != "0")
-                {
-                    label14.Text = "К сожалению, данный Гос номер уже существует в Базе данных";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(420, 799);
-                    return;
-                }
-
-                SqlDataAdapter sda1 = new SqlDataAdapter("Select Count (*) From Avto WHERE VIN = '" + insertValueVin + " '", con);
-                DataTable dt1 = new DataTable();
-                sda1.Fill(dt1);
-
-                if (dt1.Rows[0][0].ToString() != "0")
-                {
-                    label14.Text = "К сожалению, данный Вин номер уже существует в Базе данных";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(420, 799);
-                    return;
-                }
-
-                SqlDataAdapter sda2 = new SqlDataAdapter("Select Count (*) From Strahovka WHERE NomerPolica = '" + insertValueNumberPolica + " '", con);
-                DataTable dt2 = new DataTable();
-                sda2.Fill(dt2);
-
-                if (dt2.Rows[0][0].ToString() != "0")
-                {
-                    label14.Text = "К сожалению, данный Номер полиса уже есть в Базе данных";
-                    label14.ForeColor = Color.Orange;
-                    label14.Location = new Point(420, 799);
-                    return;
-                }
-
-                string idKlassaSelect = "SELECT idKlassa FROM KlassAvto Where Klass ='" + insertValueKlass + "' AND Tip = '" + insertValueTipKlassa + " '";
-                SqlCommand idKlassa = new SqlCommand(idKlassaSelect, con);
-                Int32 idKlassaInt = (Int32)(idKlassa).ExecuteScalar();
-
-                string sqlInsertNewPolic = string.Format("INSERT INTO Strahovka (TipPolica, NomerPolica ) " +
-                    " VALUES ('{0}', '{1}')", insertValueTipPolica, insertValueNumberPolica);
-                SqlCommand insNewPolic = new SqlCommand(sqlInsertNewPolic, con);
-                insNewPolic.ExecuteNonQuery();
-
-                string idPolicaSelect = "SELECT KodPolica FROM Strahovka Where TipPolica ='" + insertValueTipPolica + "' AND NomerPolica = '" + insertValueNumberPolica + " '";
-                SqlCommand idPolica = new SqlCommand(idPolicaSelect, con);
-                Int32 idPolicaInt = (Int32)(idPolica).ExecuteScalar();
-
-                string sqlInsertNewAvto = string.Format("INSERT INTO Avto (Marka, Nazvanie, GosNomer, GodVipyska, VIN, Probeg, idKlassa, KodPolica, StatusDostypa ) " +
-                    " VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', {6}, {7}, '{8}' )", insertValueMarka, insertValueNazvanie, insertValueGosNumber, insertValueYear, insertValueVin, insertValueProbeg,
-                   idKlassaInt, idPolicaInt, insertValueStatus);
-                SqlCommand insNewAvto = new SqlCommand(sqlInsertNewAvto, con);
-                insNewAvto.ExecuteNonQuery();
-                con.Close();
-
-                GetData("select * from ViewAvto");
-                label14.Text = "";
-                label14.Location = new Point(411, 799);
-                insertAvto = false;
-                textBox1.Enabled = false;
-                textBox2.Enabled = false;
-                textBox3.Enabled = false;
-                textBox4.Enabled = false;
-                textBox5.Enabled = false;
-                textBox6.Enabled = false;
-                comboBox1.Enabled = false;
-                comboBox2.Enabled = false;
-                comboBox3.Enabled = false;
-                comboBox4.Enabled = false;
-                button2.Text = "Подробная информация";
-                button2.Size = new Size(200, 29);
-                button2.Location = new Point(1150, 799);
-                checkAvto = true;
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
-            
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -490,9 +536,10 @@ namespace CarSharing
 
         private void toolStripComboBox1_TextChanged(object sender, EventArgs e)
         {
-            
-            
-                checkBox1.Enabled = true;
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
+
+            checkBox1.Enabled = true;
             
         }
 
@@ -503,6 +550,8 @@ namespace CarSharing
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             checkBox1.Enabled = true;
         }
     }

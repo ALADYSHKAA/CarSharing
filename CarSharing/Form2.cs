@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +15,16 @@ namespace CarSharing
 {
     public partial class Form2 : Form
     {
+        CurrentMethod cm;
+        Logger logger;
         public SqlConnection con { get; set; }
         public bool closing = true;
 
         public Form2()
         {
             InitializeComponent();
-
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             if (Program.connectionError == true) 
             {
                 label4.Location = new Point(180, 356);
@@ -43,6 +47,8 @@ namespace CarSharing
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             textBox1.Text = System.Net.Dns.GetHostName() + "\\SQLEXPRESS;";
             
             textBox2.Text = "Diplom";
@@ -54,6 +60,8 @@ namespace CarSharing
 
             // System.IO.File.AppendAllText("ServerName.txt", textBox1.Text + "\n");
             // System.IO.File.AppendAllText("DataBaseName.txt", textBox2.Text + "\n");
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             string writePath = "ServerName.txt";
 
             string text = textBox1.Text;
@@ -74,9 +82,12 @@ namespace CarSharing
 
                 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                MessageBox.Show("Ты пидор");
+               
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
 
        
@@ -99,11 +110,15 @@ namespace CarSharing
             catch(Exception ex)
             {
                 label4.Visible = true;
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             Application.Exit();
         }
 

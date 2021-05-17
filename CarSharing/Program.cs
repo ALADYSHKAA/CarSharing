@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +17,20 @@ namespace CarSharing
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Logger logger = LogManager.GetCurrentClassLogger();
+            logger.Debug("Start Programm");
+
             Application.Run(new Form1());
+          
+
+            //logger.Trace("trace message");
+           // logger.Debug("debug message");
+          //  logger.Info("info message");
+          //  logger.Warn("warn message");
+          //  logger.Error("error message");
+          //  logger.Fatal("fatal message");
         }
+
         public static string serverName;
         public static string bdName;
         public static bool adminOrUser;

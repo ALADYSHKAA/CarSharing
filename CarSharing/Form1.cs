@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,11 @@ namespace CarSharing
         Form3 f3;
         Form5 f5;
         Form15 f15;
+        CurrentMethod cm;
         //  Form6 f6;
         // Form7 f7;
         Form17 f17;
+        Logger logger;
 
         public SqlConnection con { get; set; }
          public SqlConnection con1 { get; set; }
@@ -34,6 +37,8 @@ namespace CarSharing
         {
             InitializeComponent();
             StreamReader streamReader1;
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             if (System.IO.File.Exists("ServerName.txt") && System.IO.File.Exists("DataBaseName.txt"))
             {
                 string path = "ServerName.txt";
@@ -119,36 +124,47 @@ namespace CarSharing
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            try
+            {
+                String connectionString1 = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
+                     "Integrated Security=True";
 
-            String connectionString1 = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
-                 "Integrated Security=True";
+                con1 = new SqlConnection(connectionString1);
+                con1.Open();
 
-            con1 = new SqlConnection(connectionString1);
-            con1.Open();
+                string firstNewSelect = "SELECT TOP (1)  KratkoeOpicanie  FROM News ORDER BY idNews DESC";
+                SqlCommand firstNew = new SqlCommand(firstNewSelect, con);
+                String firstNewString = (String)(firstNew).ExecuteScalar();
+                label3.Text = firstNewString;
 
-            string firstNewSelect = "SELECT TOP (1)  KratkoeOpicanie  FROM News ORDER BY idNews DESC";
-            SqlCommand firstNew = new SqlCommand(firstNewSelect, con);
-            String firstNewString = (String)(firstNew).ExecuteScalar();
-            label3.Text = firstNewString;
+                string firstNewFullSelect = "SELECT TOP (1)  PolnoeOpicanie  FROM News ORDER BY idNews DESC";
+                SqlCommand firstNewFull = new SqlCommand(firstNewFullSelect, con);
+                String firstNewFullString = (String)(firstNewFull).ExecuteScalar();
+                label2.Text = firstNewFullString;
 
-            string firstNewFullSelect = "SELECT TOP (1)  PolnoeOpicanie  FROM News ORDER BY idNews DESC";
-            SqlCommand firstNewFull = new SqlCommand(firstNewFullSelect, con);
-            String firstNewFullString = (String)(firstNewFull).ExecuteScalar();
-            label2.Text = firstNewFullString;
-
-            string newPicture = "SELECT TOP (1) Izobrazenie FROM News ORDER BY idNews DESC";
-            SqlCommand sqlnewPicture = new SqlCommand(newPicture, con);
-            String pictureString = (String)(sqlnewPicture).ExecuteScalar();
-            pictureBox1.Image = Image.FromFile(pictureString);
+                string newPicture = "SELECT TOP (1) Izobrazenie FROM News ORDER BY idNews DESC";
+                SqlCommand sqlnewPicture = new SqlCommand(newPicture, con);
+                String pictureString = (String)(sqlnewPicture).ExecuteScalar();
+                pictureBox1.Image = Image.FromFile(pictureString);
 
 
-            SqlDataAdapter sda1 = new SqlDataAdapter("select top(2) * from News order by idNews desc", con);
-            DataTable dt1 = new DataTable();
-            sda1.Fill(dt1);
-            label4.Text = dt1.Rows[1][1].ToString();
-            label5.Text = dt1.Rows[1][2].ToString();
-            pictureBox2.Image = Image.FromFile(dt1.Rows[1][3].ToString());
-            con1.Close();
+                SqlDataAdapter sda1 = new SqlDataAdapter("select top(2) * from News order by idNews desc", con);
+                DataTable dt1 = new DataTable();
+                sda1.Fill(dt1);
+                label4.Text = dt1.Rows[1][1].ToString();
+                label5.Text = dt1.Rows[1][2].ToString();
+                pictureBox2.Image = Image.FromFile(dt1.Rows[1][3].ToString());
+                con1.Close();
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+
+            }
+            catch(Exception ex)
+            {
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
+
+            }
 
         }
 
@@ -159,64 +175,85 @@ namespace CarSharing
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Size = new Size(0, 0);
             f17 = new Form17();
             f17.ShowDialog();
             this.Size = new Size(1070, 769);
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Size = new Size(0, 0);
             Form5 f5 = new Form5();
             f5.ShowDialog();
             Form1_Load_1(sender, e);
             this.Size = new Size(1070, 769);
+            
 
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             Application.Exit();
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            String connectionString1 = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
-                 "Integrated Security=True";
+            try
+            {
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                String connectionString1 = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
+                     "Integrated Security=True";
 
-            con1 = new SqlConnection(connectionString1);
-            con1.Open();
+                con1 = new SqlConnection(connectionString1);
+                con1.Open();
 
-            string firstNewSelect = "SELECT TOP (1)  KratkoeOpicanie  FROM News ORDER BY idNews DESC";
-            SqlCommand firstNew = new SqlCommand(firstNewSelect, con1);
-            String firstNewString = (String)(firstNew).ExecuteScalar();
-            label3.Text = firstNewString;
+                string firstNewSelect = "SELECT TOP (1)  KratkoeOpicanie  FROM News ORDER BY idNews DESC";
+                SqlCommand firstNew = new SqlCommand(firstNewSelect, con1);
+                String firstNewString = (String)(firstNew).ExecuteScalar();
+                label3.Text = firstNewString;
 
-            string firstNewFullSelect = "SELECT TOP (1)  PolnoeOpicanie  FROM News ORDER BY idNews DESC";
-            SqlCommand firstNewFull = new SqlCommand(firstNewFullSelect, con1);
-            String firstNewFullString = (String)(firstNewFull).ExecuteScalar();
-            label2.Text = firstNewFullString;
+                string firstNewFullSelect = "SELECT TOP (1)  PolnoeOpicanie  FROM News ORDER BY idNews DESC";
+                SqlCommand firstNewFull = new SqlCommand(firstNewFullSelect, con1);
+                String firstNewFullString = (String)(firstNewFull).ExecuteScalar();
+                label2.Text = firstNewFullString;
 
-            string newPicture = "SELECT TOP (1) Izobrazenie FROM News ORDER BY idNews DESC";
-            SqlCommand sqlnewPicture = new SqlCommand(newPicture, con1);
-            String pictureString = (String)(sqlnewPicture).ExecuteScalar();
-            pictureBox1.Image = Image.FromFile(pictureString);
+                string newPicture = "SELECT TOP (1) Izobrazenie FROM News ORDER BY idNews DESC";
+                SqlCommand sqlnewPicture = new SqlCommand(newPicture, con1);
+                String pictureString = (String)(sqlnewPicture).ExecuteScalar();
+                pictureBox1.Image = Image.FromFile(pictureString);
 
 
-            SqlDataAdapter sda1 = new SqlDataAdapter("select top(2) * from News order by idNews desc", con1);
-            DataTable dt1 = new DataTable();
-            sda1.Fill(dt1);
-            label4.Text = dt1.Rows[1][1].ToString();
-            label5.Text = dt1.Rows[1][2].ToString();
-            pictureBox2.Image = Image.FromFile(dt1.Rows[1][3].ToString());
-            con1.Close();
+                SqlDataAdapter sda1 = new SqlDataAdapter("select top(2) * from News order by idNews desc", con1);
+                DataTable dt1 = new DataTable();
+                sda1.Fill(dt1);
+                label4.Text = dt1.Rows[1][1].ToString();
+                label5.Text = dt1.Rows[1][2].ToString();
+                pictureBox2.Image = Image.FromFile(dt1.Rows[1][3].ToString());
+                con1.Close();
 
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
 
             string writePath = "ServerName.txt";
 
@@ -240,6 +277,8 @@ namespace CarSharing
             }
             catch (Exception ex )
             {
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
                 MessageBox.Show(Convert.ToString(ex));
             }
             Application.Restart();
@@ -248,6 +287,8 @@ namespace CarSharing
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Size = new Size(0, 0);
             f15 = new Form15();
             f15.ShowDialog();
@@ -256,6 +297,8 @@ namespace CarSharing
 
         private void button7_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             Application.Restart();
         }
     }

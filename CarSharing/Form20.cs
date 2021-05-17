@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +19,14 @@ namespace CarSharing
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         String connectionString = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
                   "Integrated Security=True";
+        Logger logger;
+        CurrentMethod cm;
 
         public Form20()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
@@ -43,7 +48,8 @@ namespace CarSharing
         {
             try
             {
-
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
                 dataGridView1.AutoGenerateColumns = true;
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
@@ -62,20 +68,26 @@ namespace CarSharing
                 // Resize the DataGridView columns to fit the newly loaded content.
 
             }
-            catch (SqlException e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Close();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           if(Convert.ToString(dataGridView1.CurrentRow.Cells[8].Value) == "Обработано")
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
+            if (Convert.ToString(dataGridView1.CurrentRow.Cells[8].Value) == "Обработано")
             {
                 button2.Enabled = false;
             }
@@ -96,48 +108,68 @@ namespace CarSharing
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (button3.Text == "Показать")
-            {
-                String insertValueDateOfStart = dateTimePicker1.Value.ToString();
-                String insertValueDateOfEnd = dateTimePicker2.Value.ToString();
-                GetData("SELECT * FROM ViewProis WHERE TimeOfStart BETWEEN '" + insertValueDateOfStart + "'  AND '" + insertValueDateOfEnd + "'");
-                button3.Text = "Отмена";
-            }
-            else if (button3.Text == "Отмена")
-            {
-                button3.Text = "Показать";
+            try{
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                if (button3.Text == "Показать")
+                {
+                    String insertValueDateOfStart = dateTimePicker1.Value.ToString();
+                    String insertValueDateOfEnd = dateTimePicker2.Value.ToString();
+                    GetData("SELECT * FROM ViewProis WHERE TimeOfStart BETWEEN '" + insertValueDateOfStart + "'  AND '" + insertValueDateOfEnd + "'");
+                    button3.Text = "Отмена";
+                }
+                else if (button3.Text == "Отмена")
+                {
+                    button3.Text = "Показать";
 
-                GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+                    GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+                }
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection(connectionString);
-            con.Open();
-            string insertValue = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
-            bool status = true;
-            string statusProisSelect = "SELECT Status FROM Proishestviya Where idProischestviya = '" + insertValue + " '";
-            SqlCommand statusProis = new SqlCommand(statusProisSelect, con);
-            bool statusProisBool = (bool)(statusProis).ExecuteScalar();
-            if (statusProisBool == false)
+            try
             {
-                string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
-                                 status, insertValue);
-                SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
-                updPovr.ExecuteNonQuery();
-                GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                con = new SqlConnection(connectionString);
+                con.Open();
+                string insertValue = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                bool status = true;
+                string statusProisSelect = "SELECT Status FROM Proishestviya Where idProischestviya = '" + insertValue + " '";
+                SqlCommand statusProis = new SqlCommand(statusProisSelect, con);
+                bool statusProisBool = (bool)(statusProis).ExecuteScalar();
+                if (statusProisBool == false)
+                {
+                    string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
+                                     status, insertValue);
+                    SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
+                    updPovr.ExecuteNonQuery();
+                    GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+                }
+                else if (statusProisBool == true)
+                {
+                    status = false;
+                    string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
+                                    status, insertValue);
+                    SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
+                    updPovr.ExecuteNonQuery();
+                    GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+                }
+                con.Close();
             }
-            else if(statusProisBool == true)
+            catch(Exception ex)
             {
-                status = false;
-                string sqlUpdatePovr = string.Format("UPDATE Proishestviya SET Status = '{0}'  WHERE idProischestviya = {1}",
-                                status, insertValue);
-                SqlCommand updPovr = new SqlCommand(sqlUpdatePovr, con);
-                updPovr.ExecuteNonQuery();
-                GetData("SELECT * FROM ViewProis ORDER BY TimeOfStart");
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
-            con.Close();
         }
 
         private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)

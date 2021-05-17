@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace CarSharing
     {
         Form2 f2;
         Form4 f4;
+        Logger logger;
+        CurrentMethod cm;
         //Form1 f1;
         public SqlConnection con { get; set; }
         public bool closing = true;
@@ -23,7 +26,10 @@ namespace CarSharing
 
         public Form3()
         {
+
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             f2 = new Form2();
             textBox3.Visible = false;
             label3.Visible = false;
@@ -36,12 +42,16 @@ namespace CarSharing
 
         private void label4_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             f4 = new Form4();
             f4.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {   
+        {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             String insertValueLogin = textBox1.Text;
             String insertValuePass = textBox2.Text;
             String insertValueKod = textBox3.Text;
@@ -129,6 +139,8 @@ namespace CarSharing
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             if (checkBox1.CheckState == CheckState.Checked)
             {
                 textBox3.Visible = true;
@@ -143,11 +155,14 @@ namespace CarSharing
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             Application.Exit();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+
             label5.Visible = false;
         }
 
@@ -163,7 +178,8 @@ namespace CarSharing
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             if (closing == true)
             {
                 Application.Exit();
@@ -172,6 +188,8 @@ namespace CarSharing
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(sender, e);

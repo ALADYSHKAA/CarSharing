@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,10 +23,14 @@ namespace CarSharing
         bool insertNews;
         bool deleteNews;
         String fileName;
+        Logger logger;
+        CurrentMethod cm;
 
         public Form14()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             GetData("SELECT * FROM News ORDER BY idNews DESC");
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
@@ -53,7 +58,8 @@ namespace CarSharing
         {
             try
             {
-
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
                 dataGridView1.AutoGenerateColumns = true;
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
@@ -72,16 +78,18 @@ namespace CarSharing
                 // Resize the DataGridView columns to fit the newly loaded content.
 
             }
-            catch (SqlException)
+            catch (Exception ex)
             {
-                MessageBox.Show("To run this example, replace the value of the " +
-                    "connectionString variable with a connection string that is " +
-                    "valid for your system.");
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             insertNews = true;
             updateNews = false;
             deleteNews = false;
@@ -101,6 +109,8 @@ namespace CarSharing
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             insertNews = false;
             updateNews = true;
             deleteNews = false;
@@ -122,6 +132,8 @@ namespace CarSharing
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             insertNews = false;
             updateNews = false;
             deleteNews = true;
@@ -141,170 +153,194 @@ namespace CarSharing
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(insertNews == true)
+            try
             {
-                updateNews = false;
-                deleteNews = false;
-
-                String insertValueKratkNews = textBox1.Text;
-                String insertValueFullNews = richTextBox1.Text;
-                String insertValueFileName = fileName;
-                con = new SqlConnection(connectionString);
-                con.Open();
-                if (textBox1.Text.Length < 5)
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                if (insertNews == true)
                 {
-                    label5.Text = "Краткое описание новости не может быть короче 5 символов";
-                    label5.ForeColor = Color.Orange;
-                    return;
-                }
-
-                if (richTextBox1.Text.Length < 20)
-                {
-                    label5.Text = "Полное описание новости не может быть короче 20 символов";
-                    label5.ForeColor = Color.Orange;
-                    return;
-                }
-                if (fileName == null)
-                {
-                    label5.Text = "Фотография не выбрана";
-                    label5.ForeColor = Color.Orange;
-                    label5.Location = new Point(480, 733);
-                    return;
-                }
-                string message = "Вы действительно хотите добавить данную новость, её увидят все пользователи.";
-                string caption = "Добавление новости";
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string sqlInsertNewNews = string.Format("INSERT INTO News (KratkoeOpicanie, PolnoeOpicanie, Izobrazenie) " +
-                     " VALUES ('{0}', '{1}', '{2}')", insertValueKratkNews, insertValueFullNews, insertValueFileName);
-                    SqlCommand insNewNews = new SqlCommand(sqlInsertNewNews, con);
-                    insNewNews.ExecuteNonQuery();
-                    GetData("SELECT * FROM News ORDER BY idNews DESC");
-                    con.Close();
-                    button2.Visible = false;
-                    textBox1.Text = "";
-                    richTextBox1.Text = "";
-                    pictureBox1.Image = null;
-                    textBox1.Enabled = false;
-                    richTextBox1.Enabled = false;
-                    pictureBox1.Enabled = false;
-                    label5.Visible = false;
-                    label5.Location = new Point(338, 733);
-                    fileName = null;
-                    insertNews = false;
-
-                }
-
-            }
-            if(updateNews == true)
-            {
-                insertNews = false;
-                deleteNews = false;
-                String insertValueKratkNews = textBox1.Text;
-                String insertValueFullNews = richTextBox1.Text;
-                String insertValueFileName = fileName;
-                String insertValueIdNews = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
-                con = new SqlConnection(connectionString);
-                con.Open();
-                if (textBox1.Text.Length < 5)
-                {
-                    label5.Text = "Краткое описание новости не может быть короче 5 символов";
-                    label5.ForeColor = Color.Orange;
-                    return;
-                }
-
-                if (richTextBox1.Text.Length < 20)
-                {
-                    label5.Text = "Полное описание новости не может быть короче 20 символов";
-                    label5.ForeColor = Color.Orange;
-                    return;
-                }
-                if (fileName == null)
-                {
-                    label5.Text = "Фотография не выбрана";
-                    label5.ForeColor = Color.Orange;
-                    label5.Location = new Point(480, 733);
-                    return;
-                }
-                string message = "Вы действительно хотите изменить данную новость, её увидят все пользователи.";
-                string caption = "Изменение новости";
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string sqlUpdateNews = string.Format("UPDATE News SET KratkoeOpicanie = '{0}' , PolnoeOpicanie = '{1}' , Izobrazenie = '{2}'  WHERE idNews = {3}",
-                             insertValueKratkNews, insertValueFullNews, insertValueFileName, insertValueIdNews);
-                    SqlCommand updNews = new SqlCommand(sqlUpdateNews, con);
-                    updNews.ExecuteNonQuery();
-                    con.Close();
-                    GetData("SELECT * FROM News ORDER BY idNews DESC");
-                    button2.Visible = false;
-                    textBox1.Text = "";
-                    richTextBox1.Text = "";
-                    pictureBox1.Image = null;
-                    textBox1.Enabled = false;
-                    richTextBox1.Enabled = false;
-                    pictureBox1.Enabled = false;
-                    label5.Visible = false;
-                    label5.Location = new Point(338, 733);
-                    fileName = null;
                     updateNews = false;
-
-                }
-
-            }
-            if (deleteNews == true)
-            {
-                insertNews = false;
-                updateNews = false;
-                String insertValueIdNews = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
-                con = new SqlConnection(connectionString);
-                con.Open();
-                string message = "Вы действительно хотите удалить данную новость";
-                string caption = "Удаление новости";
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string sqlDelNews = string.Format("DELETE FROM News WHERE idNews = {0}", insertValueIdNews);
-                    SqlCommand delNews = new SqlCommand(sqlDelNews, con);
-                    delNews.ExecuteNonQuery();
-                    GetData("SELECT * FROM News ORDER BY idNews DESC");
-
-                    con.Close();
-
-                    button2.Visible = false;
-                    textBox1.Text = "";
-                    richTextBox1.Text = "";
-                    pictureBox1.Image = null;
-                    textBox1.Enabled = false;
-                    richTextBox1.Enabled = false;
-                    pictureBox1.Enabled = false;
-                    label5.Visible = false;
-                    label5.Location = new Point(338, 733);
-                    fileName = null;
                     deleteNews = false;
+
+                    String insertValueKratkNews = textBox1.Text;
+                    String insertValueFullNews = richTextBox1.Text;
+                    String insertValueFileName = fileName;
+                    con = new SqlConnection(connectionString);
+                    con.Open();
+                    if (textBox1.Text.Length < 5)
+                    {
+                        label5.Text = "Краткое описание новости не может быть короче 5 символов";
+                        label5.ForeColor = Color.Orange;
+                        return;
+                    }
+
+                    if (richTextBox1.Text.Length < 20)
+                    {
+                        label5.Text = "Полное описание новости не может быть короче 20 символов";
+                        label5.ForeColor = Color.Orange;
+                        return;
+                    }
+                    if (fileName == null)
+                    {
+                        label5.Text = "Фотография не выбрана";
+                        label5.ForeColor = Color.Orange;
+                        label5.Location = new Point(480, 733);
+                        return;
+                    }
+                    string message = "Вы действительно хотите добавить данную новость, её увидят все пользователи.";
+                    string caption = "Добавление новости";
+                    DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string sqlInsertNewNews = string.Format("INSERT INTO News (KratkoeOpicanie, PolnoeOpicanie, Izobrazenie) " +
+                         " VALUES ('{0}', '{1}', '{2}')", insertValueKratkNews, insertValueFullNews, insertValueFileName);
+                        SqlCommand insNewNews = new SqlCommand(sqlInsertNewNews, con);
+                        insNewNews.ExecuteNonQuery();
+                        GetData("SELECT * FROM News ORDER BY idNews DESC");
+                        con.Close();
+                        button2.Visible = false;
+                        textBox1.Text = "";
+                        richTextBox1.Text = "";
+                        pictureBox1.Image = null;
+                        textBox1.Enabled = false;
+                        richTextBox1.Enabled = false;
+                        pictureBox1.Enabled = false;
+                        label5.Visible = false;
+                        label5.Location = new Point(338, 733);
+                        fileName = null;
+                        insertNews = false;
+
+                    }
+
                 }
+                if (updateNews == true)
+                {
+                    insertNews = false;
+                    deleteNews = false;
+                    String insertValueKratkNews = textBox1.Text;
+                    String insertValueFullNews = richTextBox1.Text;
+                    String insertValueFileName = fileName;
+                    String insertValueIdNews = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                    con = new SqlConnection(connectionString);
+                    con.Open();
+                    if (textBox1.Text.Length < 5)
+                    {
+                        label5.Text = "Краткое описание новости не может быть короче 5 символов";
+                        label5.ForeColor = Color.Orange;
+                        return;
+                    }
+
+                    if (richTextBox1.Text.Length < 20)
+                    {
+                        label5.Text = "Полное описание новости не может быть короче 20 символов";
+                        label5.ForeColor = Color.Orange;
+                        return;
+                    }
+                    if (fileName == null)
+                    {
+                        label5.Text = "Фотография не выбрана";
+                        label5.ForeColor = Color.Orange;
+                        label5.Location = new Point(480, 733);
+                        return;
+                    }
+                    string message = "Вы действительно хотите изменить данную новость, её увидят все пользователи.";
+                    string caption = "Изменение новости";
+                    DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string sqlUpdateNews = string.Format("UPDATE News SET KratkoeOpicanie = '{0}' , PolnoeOpicanie = '{1}' , Izobrazenie = '{2}'  WHERE idNews = {3}",
+                                 insertValueKratkNews, insertValueFullNews, insertValueFileName, insertValueIdNews);
+                        SqlCommand updNews = new SqlCommand(sqlUpdateNews, con);
+                        updNews.ExecuteNonQuery();
+                        con.Close();
+                        GetData("SELECT * FROM News ORDER BY idNews DESC");
+                        button2.Visible = false;
+                        textBox1.Text = "";
+                        richTextBox1.Text = "";
+                        pictureBox1.Image = null;
+                        textBox1.Enabled = false;
+                        richTextBox1.Enabled = false;
+                        pictureBox1.Enabled = false;
+                        label5.Visible = false;
+                        label5.Location = new Point(338, 733);
+                        fileName = null;
+                        updateNews = false;
+
+                    }
+
+                }
+                if (deleteNews == true)
+                {
+                    insertNews = false;
+                    updateNews = false;
+                    String insertValueIdNews = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                    con = new SqlConnection(connectionString);
+                    con.Open();
+                    string message = "Вы действительно хотите удалить данную новость";
+                    string caption = "Удаление новости";
+                    DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string sqlDelNews = string.Format("DELETE FROM News WHERE idNews = {0}", insertValueIdNews);
+                        SqlCommand delNews = new SqlCommand(sqlDelNews, con);
+                        delNews.ExecuteNonQuery();
+                        GetData("SELECT * FROM News ORDER BY idNews DESC");
+
+                        con.Close();
+
+                        button2.Visible = false;
+                        textBox1.Text = "";
+                        richTextBox1.Text = "";
+                        pictureBox1.Image = null;
+                        textBox1.Enabled = false;
+                        richTextBox1.Enabled = false;
+                        pictureBox1.Enabled = false;
+                        label5.Visible = false;
+                        label5.Location = new Point(338, 733);
+                        fileName = null;
+                        deleteNews = false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            var ofd = new OpenFileDialog();
-            ofd.Filter = "Image Files(*.BMP; *.PNG; *.JPG; *.GIF)| *.BMP; *.PNG; *.JPG; *.GIF";
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            if (ofd.ShowDialog(this) == DialogResult.OK)
-                pictureBox1.Image = Image.FromFile(ofd.FileName);
-            fileName = ofd.FileName;
-            if (ofd.FileName == "")
+            try
             {
-                pictureBox1.Image = null;
-                fileName = null;
-                return;
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                var ofd = new OpenFileDialog();
+                ofd.Filter = "Image Files(*.BMP; *.PNG; *.JPG; *.GIF)| *.BMP; *.PNG; *.JPG; *.GIF";
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                if (ofd.ShowDialog(this) == DialogResult.OK)
+                    pictureBox1.Image = Image.FromFile(ofd.FileName);
+                fileName = ofd.FileName;
+                if (ofd.FileName == "")
+                {
+                    pictureBox1.Image = null;
+                    fileName = null;
+                    return;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +20,14 @@ namespace CarSharing
         String connectionString = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
                   "Integrated Security=True";
         Form19 f19;
+        Logger logger;
+        CurrentMethod cm;
 
         public Form18()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
@@ -48,7 +53,8 @@ namespace CarSharing
         {
             try
             {
-
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
                 dataGridView1.AutoGenerateColumns = true;
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
@@ -67,9 +73,11 @@ namespace CarSharing
                 // Resize the DataGridView columns to fit the newly loaded content.
 
             }
-            catch (SqlException e )
+            catch (Exception ex )
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
@@ -107,31 +115,45 @@ namespace CarSharing
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (button1.Text == "Показать")
+            try
             {
-                String insertValueDateOfStart = dateTimePicker1.Value.ToString();
-                String insertValueDateOfEnd = dateTimePicker2.Value.ToString();
-                GetData("SELECT * FROM ViewTrips WHERE TimeOfStart BETWEEN '" + insertValueDateOfStart + "'  AND '" + insertValueDateOfEnd + "'");
-                button1.Text = "Отмена";
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                if (button1.Text == "Показать")
+                {
+                    String insertValueDateOfStart = dateTimePicker1.Value.ToString();
+                    String insertValueDateOfEnd = dateTimePicker2.Value.ToString();
+                    GetData("SELECT * FROM ViewTrips WHERE TimeOfStart BETWEEN '" + insertValueDateOfStart + "'  AND '" + insertValueDateOfEnd + "'");
+                    button1.Text = "Отмена";
+                }
+                else if (button1.Text == "Отмена")
+                {
+                    button1.Text = "Показать";
+
+                    GetData("SELECT * FROM ViewTrips ORDER BY TimeOfStart");
+                }
+
+
             }
-            else if(button1.Text == "Отмена")
+            catch (Exception ex)
             {
-                button1.Text = "Показать";
-               
-                GetData("SELECT * FROM ViewTrips ORDER BY TimeOfStart");
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
-
-            
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             Program.getIdTrip = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
             f19 = new Form19();
             f19.ShowDialog();

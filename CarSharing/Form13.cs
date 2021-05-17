@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,11 +22,14 @@ namespace CarSharing
         bool updateKlass;
         bool insertKlass;
         bool deleteKlass;
-
+        Logger logger;
+        CurrentMethod cm;
 
         public Form13()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
@@ -50,7 +54,8 @@ namespace CarSharing
         {
             try
             {
-
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
                 dataGridView1.AutoGenerateColumns = true;
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
@@ -69,21 +74,25 @@ namespace CarSharing
                 // Resize the DataGridView columns to fit the newly loaded content.
 
             }
-            catch (SqlException)
+            catch (Exception ex)
             {
-                MessageBox.Show("To run this example, replace the value of the " +
-                    "connectionString variable with a connection string that is " +
-                    "valid for your system.");
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Close();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             insertKlass = true;
             updateKlass = false;
             deleteKlass = false;
@@ -95,6 +104,8 @@ namespace CarSharing
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             updateKlass = true;
             insertKlass = false;
             deleteKlass = false;
@@ -109,6 +120,8 @@ namespace CarSharing
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             deleteKlass = true;
             insertKlass = false;
             updateKlass = false;
@@ -118,96 +131,107 @@ namespace CarSharing
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (insertKlass == true)
+            try
             {
-                updateKlass = false;
-                deleteKlass = false;
-
-                String insertValueNameOfKlass = textBox1.Text;
-                String insertValueTypeOfKlass = textBox2.Text;
-
-                con = new SqlConnection(connectionString);
-                con.Open();
-                if (textBox1.Text.Length < 5)
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
+                if (insertKlass == true)
                 {
-                    MessageBox.Show("Название тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (textBox2.Text.Length < 5)
-                {
-                    MessageBox.Show("Тип тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                string sqlInsertNewKlass = string.Format("INSERT INTO KlassAvto (Klass, Tip) " +
-                    " VALUES ('{0}', '{1}')", insertValueNameOfKlass, insertValueTypeOfKlass);
-                SqlCommand insNewKlass = new SqlCommand(sqlInsertNewKlass, con);
-                insNewKlass.ExecuteNonQuery();
-                con.Close();
-                GetData("Select * From KlassAvto");
-                insertKlass = false;
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox1.Enabled = false;
-                textBox2.Enabled = false;
-                button2.Visible = false;
-            }
-            else if(updateKlass == true)
-            {
-                insertKlass = false;
-                deleteKlass = false;
-                String insertValueNameOfKlass = textBox1.Text;
-                String insertValueTypeOfKlass = textBox2.Text;
-                String insertValueIdKlass = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
-                con = new SqlConnection(connectionString);
-                con.Open();
-                if (textBox1.Text.Length < 5)
-                {
-                    MessageBox.Show("Название тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (textBox2.Text.Length < 5)
-                {
-                    MessageBox.Show("Тип тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                string sqlUpdateKlass = string.Format("UPDATE KlassAvto SET Klass = '{0}' , Tip = '{1}'  WHERE idKlassa = {2}",
-                            insertValueNameOfKlass, insertValueTypeOfKlass, insertValueIdKlass);
-                SqlCommand updKlass = new SqlCommand(sqlUpdateKlass, con);
-                updKlass.ExecuteNonQuery();
-                con.Close();
-                GetData("Select * From KlassAvto");
-                updateKlass = false;
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox1.Enabled = false;
-                textBox2.Enabled = false;
-                button2.Visible = false;
-
-            }
-            else if(deleteKlass == true)
-            {
-                insertKlass = false;
-                updateKlass = false;
-                con = new SqlConnection(connectionString);
-                con.Open();
-                String insertValueIdKlass = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
-                string message = "Вы действительно хотите удалить данный Класс?";
-                string caption = "Удаление класса";
-                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string sqlDelKlass = string.Format("DELETE FROM KlassAvto WHERE idKlassa = {0}", insertValueIdKlass);
-                    SqlCommand delKlass = new SqlCommand(sqlDelKlass, con);
-                    delKlass.ExecuteNonQuery();
-                    GetData("select * from KlassAvto");
-
-                    con.Close();
-                    
+                    updateKlass = false;
                     deleteKlass = false;
+
+                    String insertValueNameOfKlass = textBox1.Text;
+                    String insertValueTypeOfKlass = textBox2.Text;
+
+                    con = new SqlConnection(connectionString);
+                    con.Open();
+                    if (textBox1.Text.Length < 5)
+                    {
+                        MessageBox.Show("Название тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (textBox2.Text.Length < 5)
+                    {
+                        MessageBox.Show("Тип тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    string sqlInsertNewKlass = string.Format("INSERT INTO KlassAvto (Klass, Tip) " +
+                        " VALUES ('{0}', '{1}')", insertValueNameOfKlass, insertValueTypeOfKlass);
+                    SqlCommand insNewKlass = new SqlCommand(sqlInsertNewKlass, con);
+                    insNewKlass.ExecuteNonQuery();
+                    con.Close();
+                    GetData("Select * From KlassAvto");
+                    insertKlass = false;
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox1.Enabled = false;
+                    textBox2.Enabled = false;
                     button2.Visible = false;
                 }
+                else if (updateKlass == true)
+                {
+                    insertKlass = false;
+                    deleteKlass = false;
+                    String insertValueNameOfKlass = textBox1.Text;
+                    String insertValueTypeOfKlass = textBox2.Text;
+                    String insertValueIdKlass = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                    con = new SqlConnection(connectionString);
+                    con.Open();
+                    if (textBox1.Text.Length < 5)
+                    {
+                        MessageBox.Show("Название тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (textBox2.Text.Length < 5)
+                    {
+                        MessageBox.Show("Тип тарифа должно быть больше 5 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    string sqlUpdateKlass = string.Format("UPDATE KlassAvto SET Klass = '{0}' , Tip = '{1}'  WHERE idKlassa = {2}",
+                                insertValueNameOfKlass, insertValueTypeOfKlass, insertValueIdKlass);
+                    SqlCommand updKlass = new SqlCommand(sqlUpdateKlass, con);
+                    updKlass.ExecuteNonQuery();
+                    con.Close();
+                    GetData("Select * From KlassAvto");
+                    updateKlass = false;
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    textBox1.Enabled = false;
+                    textBox2.Enabled = false;
+                    button2.Visible = false;
+
+                }
+                else if (deleteKlass == true)
+                {
+                    insertKlass = false;
+                    updateKlass = false;
+                    con = new SqlConnection(connectionString);
+                    con.Open();
+                    String insertValueIdKlass = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                    string message = "Вы действительно хотите удалить данный Класс?";
+                    string caption = "Удаление класса";
+                    DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string sqlDelKlass = string.Format("DELETE FROM KlassAvto WHERE idKlassa = {0}", insertValueIdKlass);
+                        SqlCommand delKlass = new SqlCommand(sqlDelKlass, con);
+                        delKlass.ExecuteNonQuery();
+                        GetData("select * from KlassAvto");
+
+                        con.Close();
+
+                        deleteKlass = false;
+                        button2.Visible = false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
         }
     }

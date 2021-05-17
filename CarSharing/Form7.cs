@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ namespace CarSharing
 {
     public partial class Form7 : Form
     {
+        Logger logger;
+        CurrentMethod cm;
         public SqlConnection con { get; set; }
         private SqlDataAdapter dataAdapter = new SqlDataAdapter();
         String connectionString = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
@@ -22,8 +25,9 @@ namespace CarSharing
         public Form7()
         {
             InitializeComponent();
-
-           // LoadData();
+            logger = LogManager.GetCurrentClassLogger();
+            cm = new CurrentMethod();
+            // LoadData();
 
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
@@ -69,7 +73,8 @@ namespace CarSharing
         {
             try
             {
-
+                string v = cm.GetCurrentMethod();
+                logger.Info(v);
                 dataGridView1.AutoGenerateColumns = true;
                 dataAdapter = new SqlDataAdapter(selectCommand, connectionString);
 
@@ -89,11 +94,11 @@ namespace CarSharing
                 // Resize the DataGridView columns to fit the newly loaded content.
 
             }
-            catch (SqlException)
+            catch (Exception ex)
             {
-                MessageBox.Show("To run this example, replace the value of the " +
-                    "connectionString variable with a connection string that is " +
-                    "valid for your system.");
+                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string method = cm.GetCurrentMethod();
+                logger.Error(ex.ToString() + method);
             }
             }
 
@@ -105,6 +110,7 @@ namespace CarSharing
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+           
             if (e.ColumnIndex == 6)
             {
                 if (e.Value is bool)
@@ -128,6 +134,8 @@ namespace CarSharing
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             if (comboBox1.Text == "Фио")
             {
                 string query;
@@ -155,6 +163,8 @@ namespace CarSharing
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             if (checkBox1.CheckState == CheckState.Checked)
             {
                 GetData("Select * from Polzovatel where StatusPodtverzdeniya = 0 ");
@@ -167,11 +177,15 @@ namespace CarSharing
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string v = cm.GetCurrentMethod();
+            logger.Info(v);
             Program.getIdUser = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
             MessageBox.Show(Program.getIdUser);
             f8 = new Form8();

@@ -42,6 +42,7 @@ namespace CarSharing
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form9
             // 
@@ -50,6 +51,7 @@ namespace CarSharing
             this.ClientSize = new System.Drawing.Size(1222, 673);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form9";
+            this.Load += new System.EventHandler(this.Form9_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
