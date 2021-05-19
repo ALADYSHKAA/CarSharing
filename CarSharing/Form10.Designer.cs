@@ -691,7 +691,7 @@ namespace CarSharing
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form10";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form10";
+            this.Text = "Автомобили";
             this.Load += new System.EventHandler(this.Form10_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();

@@ -68,6 +68,7 @@ namespace CarSharing
             this.label15 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -75,14 +76,14 @@ namespace CarSharing
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(188, 74);
+            this.textBox1.Location = new System.Drawing.Point(181, 115);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(145, 20);
             this.textBox1.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(105, 74);
+            this.label1.Location = new System.Drawing.Point(98, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 23);
             this.label1.TabIndex = 1;
@@ -91,7 +92,7 @@ namespace CarSharing
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(82, 36);
+            this.label2.Location = new System.Drawing.Point(75, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 23);
             this.label2.TabIndex = 3;
@@ -100,14 +101,14 @@ namespace CarSharing
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(188, 39);
+            this.textBox2.Location = new System.Drawing.Point(181, 80);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(145, 20);
             this.textBox2.TabIndex = 2;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(82, 111);
+            this.label3.Location = new System.Drawing.Point(75, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 23);
             this.label3.TabIndex = 5;
@@ -116,14 +117,14 @@ namespace CarSharing
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(188, 113);
+            this.textBox3.Location = new System.Drawing.Point(181, 154);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(145, 20);
             this.textBox3.TabIndex = 4;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(65, 149);
+            this.label4.Location = new System.Drawing.Point(58, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 23);
             this.label4.TabIndex = 7;
@@ -132,7 +133,7 @@ namespace CarSharing
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(65, 186);
+            this.label5.Location = new System.Drawing.Point(58, 227);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 23);
             this.label5.TabIndex = 9;
@@ -141,7 +142,7 @@ namespace CarSharing
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(188, 186);
+            this.richTextBox1.Location = new System.Drawing.Point(181, 227);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(163, 96);
             this.richTextBox1.TabIndex = 10;
@@ -149,7 +150,7 @@ namespace CarSharing
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(65, 304);
+            this.label6.Location = new System.Drawing.Point(58, 345);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 23);
             this.label6.TabIndex = 11;
@@ -159,14 +160,14 @@ namespace CarSharing
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(188, 307);
+            this.dateTimePicker1.Location = new System.Drawing.Point(181, 348);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(86, 20);
             this.dateTimePicker1.TabIndex = 12;
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(65, 338);
+            this.label7.Location = new System.Drawing.Point(58, 379);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 45);
             this.label7.TabIndex = 13;
@@ -175,7 +176,7 @@ namespace CarSharing
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(48, 395);
+            this.label8.Location = new System.Drawing.Point(41, 436);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 23);
             this.label8.TabIndex = 15;
@@ -184,14 +185,14 @@ namespace CarSharing
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(188, 395);
+            this.textBox6.Location = new System.Drawing.Point(181, 436);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(145, 20);
             this.textBox6.TabIndex = 16;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(38, 430);
+            this.label9.Location = new System.Drawing.Point(31, 471);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(121, 23);
             this.label9.TabIndex = 17;
@@ -210,7 +211,7 @@ namespace CarSharing
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(199, 469);
+            this.button2.Location = new System.Drawing.Point(192, 510);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 20;
@@ -220,7 +221,7 @@ namespace CarSharing
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(727, 71);
+            this.label10.Location = new System.Drawing.Point(727, 115);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 23);
             this.label10.TabIndex = 25;
@@ -229,14 +230,14 @@ namespace CarSharing
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(822, 74);
+            this.textBox8.Location = new System.Drawing.Point(822, 118);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 20);
             this.textBox8.TabIndex = 24;
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(739, 36);
+            this.label11.Location = new System.Drawing.Point(739, 80);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(54, 23);
             this.label11.TabIndex = 23;
@@ -245,14 +246,14 @@ namespace CarSharing
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(822, 36);
+            this.textBox9.Location = new System.Drawing.Point(822, 80);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 20);
             this.textBox9.TabIndex = 22;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(822, 160);
+            this.button4.Location = new System.Drawing.Point(822, 204);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 26;
@@ -266,7 +267,7 @@ namespace CarSharing
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.pictureBox1.Location = new System.Drawing.Point(477, 395);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(206, 174);
@@ -276,7 +277,7 @@ namespace CarSharing
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.pictureBox2.Location = new System.Drawing.Point(726, 395);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(196, 174);
@@ -305,7 +306,7 @@ namespace CarSharing
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(188, 350);
+            this.maskedTextBox1.Location = new System.Drawing.Point(181, 391);
             this.maskedTextBox1.Mask = "9999999999";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(145, 20);
@@ -314,7 +315,7 @@ namespace CarSharing
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(694, 108);
+            this.label12.Location = new System.Drawing.Point(694, 152);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 23);
             this.label12.TabIndex = 33;
@@ -323,14 +324,14 @@ namespace CarSharing
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(822, 111);
+            this.textBox5.Location = new System.Drawing.Point(822, 155);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 32;
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(188, 151);
+            this.maskedTextBox2.Location = new System.Drawing.Point(181, 192);
             this.maskedTextBox2.Mask = "9999999999";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(145, 20);
@@ -339,7 +340,7 @@ namespace CarSharing
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(188, 432);
+            this.maskedTextBox3.Location = new System.Drawing.Point(181, 473);
             this.maskedTextBox3.Mask = "+7 (999) 000-00-00";
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.Size = new System.Drawing.Size(145, 20);
@@ -376,7 +377,7 @@ namespace CarSharing
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.pictureBox3.Location = new System.Drawing.Point(963, 395);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(196, 174);
@@ -408,7 +409,7 @@ namespace CarSharing
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(988, 78);
+            this.checkBox2.Location = new System.Drawing.Point(988, 122);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(114, 17);
             this.checkBox2.TabIndex = 42;
@@ -416,11 +417,25 @@ namespace CarSharing
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(0, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(1189, 38);
+            this.label16.TabIndex = 43;
+            this.label16.Text = "Регистрация\r\n";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1189, 726);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label15);
@@ -461,6 +476,7 @@ namespace CarSharing
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form4";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Регистрация";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form4_FormClosing);
             this.Load += new System.EventHandler(this.Form4_Load);
@@ -513,5 +529,6 @@ namespace CarSharing
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label16;
     }
 }

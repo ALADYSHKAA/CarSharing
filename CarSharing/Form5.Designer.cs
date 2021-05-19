@@ -52,7 +52,6 @@ namespace CarSharing
             this.label23 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -71,6 +70,7 @@ namespace CarSharing
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -167,7 +167,7 @@ namespace CarSharing
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(26)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label28);
             this.panel1.Controls.Add(this.label29);
@@ -201,7 +201,7 @@ namespace CarSharing
             this.panel1.Location = new System.Drawing.Point(2, 27);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(944, 392);
+            this.panel1.Size = new System.Drawing.Size(944, 393);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -218,7 +218,7 @@ namespace CarSharing
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.Color.Magenta;
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label28.Location = new System.Drawing.Point(321, 324);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(60, 19);
@@ -228,6 +228,7 @@ namespace CarSharing
             // label29
             // 
             this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label29.Location = new System.Drawing.Point(12, 324);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
@@ -238,7 +239,7 @@ namespace CarSharing
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.Magenta;
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label26.Location = new System.Drawing.Point(672, 292);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(60, 19);
@@ -248,6 +249,7 @@ namespace CarSharing
             // label27
             // 
             this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label27.Location = new System.Drawing.Point(532, 292);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
@@ -258,7 +260,7 @@ namespace CarSharing
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.Color.Magenta;
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label24.Location = new System.Drawing.Point(225, 292);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(60, 19);
@@ -268,6 +270,7 @@ namespace CarSharing
             // label25
             // 
             this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label25.Location = new System.Drawing.Point(12, 292);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
@@ -278,7 +281,7 @@ namespace CarSharing
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.ForeColor = System.Drawing.Color.Magenta;
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label22.Location = new System.Drawing.Point(567, 261);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(60, 19);
@@ -288,6 +291,7 @@ namespace CarSharing
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label23.Location = new System.Drawing.Point(427, 261);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
@@ -298,7 +302,7 @@ namespace CarSharing
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.Magenta;
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label20.Location = new System.Drawing.Point(268, 261);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(60, 19);
@@ -308,6 +312,7 @@ namespace CarSharing
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label21.Location = new System.Drawing.Point(12, 261);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
@@ -315,19 +320,10 @@ namespace CarSharing
             this.label21.TabIndex = 29;
             this.label21.Text = "Самый популярный автомобиль:\r\n";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Magenta;
-            this.label18.Location = new System.Drawing.Point(262, 232);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 19);
-            this.label18.TabIndex = 28;
-            this.label18.Text = "label18";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label19.Location = new System.Drawing.Point(11, 232);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
@@ -338,7 +334,7 @@ namespace CarSharing
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.Magenta;
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label16.Location = new System.Drawing.Point(250, 203);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(60, 19);
@@ -348,6 +344,7 @@ namespace CarSharing
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label17.Location = new System.Drawing.Point(12, 203);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
@@ -358,7 +355,7 @@ namespace CarSharing
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Magenta;
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label12.Location = new System.Drawing.Point(403, 171);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 19);
@@ -368,6 +365,7 @@ namespace CarSharing
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label13.Location = new System.Drawing.Point(224, 171);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
@@ -378,7 +376,7 @@ namespace CarSharing
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Magenta;
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label14.Location = new System.Drawing.Point(186, 171);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(60, 19);
@@ -388,6 +386,7 @@ namespace CarSharing
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label15.Location = new System.Drawing.Point(12, 171);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
@@ -398,7 +397,7 @@ namespace CarSharing
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Magenta;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label11.Location = new System.Drawing.Point(352, 137);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 19);
@@ -408,6 +407,7 @@ namespace CarSharing
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label10.Location = new System.Drawing.Point(211, 137);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
@@ -418,7 +418,7 @@ namespace CarSharing
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Magenta;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label8.Location = new System.Drawing.Point(174, 137);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 19);
@@ -428,6 +428,7 @@ namespace CarSharing
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label9.Location = new System.Drawing.Point(12, 137);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
@@ -438,7 +439,7 @@ namespace CarSharing
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Magenta;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label6.Location = new System.Drawing.Point(322, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 19);
@@ -448,6 +449,7 @@ namespace CarSharing
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label7.Location = new System.Drawing.Point(12, 107);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
@@ -458,7 +460,7 @@ namespace CarSharing
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Magenta;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label4.Location = new System.Drawing.Point(193, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 19);
@@ -468,6 +470,7 @@ namespace CarSharing
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label5.Location = new System.Drawing.Point(11, 75);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -478,7 +481,7 @@ namespace CarSharing
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Magenta;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label3.Location = new System.Drawing.Point(136, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 19);
@@ -501,6 +504,7 @@ namespace CarSharing
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
             this.label1.Location = new System.Drawing.Point(11, 47);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -508,11 +512,21 @@ namespace CarSharing
             this.label1.TabIndex = 0;
             this.label1.Text = "Всего поездок:";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
+            this.label18.Location = new System.Drawing.Point(262, 232);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(60, 19);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "label18";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 419);
+            this.ClientSize = new System.Drawing.Size(946, 418);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -521,7 +535,7 @@ namespace CarSharing
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form5";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form5";
+            this.Text = "Администрирование";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form5_FormClosing);
             this.Load += new System.EventHandler(this.Form5_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -563,7 +577,6 @@ namespace CarSharing
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
@@ -576,5 +589,6 @@ namespace CarSharing
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label18;
     }
 }

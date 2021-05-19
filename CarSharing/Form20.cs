@@ -166,7 +166,7 @@ namespace CarSharing
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               // MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
             }

@@ -33,7 +33,7 @@ namespace CarSharing
             dateNow =  dateTimePicker1.Value;
             dateTimePicker1.Enabled = false;
             textBox1.Enabled = false;
-            textBox2.Enabled = false;
+            textBox2.ReadOnly = true;
             comboBox2.Enabled = false;
             comboBox3.Enabled = false;
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -109,7 +109,7 @@ namespace CarSharing
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
             }
@@ -180,7 +180,7 @@ namespace CarSharing
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               // MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
             }
@@ -277,7 +277,7 @@ namespace CarSharing
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               // MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
             }
@@ -351,6 +351,7 @@ namespace CarSharing
                     Double finalCost = cena * Convert.ToDouble(timeInMinute);
 
                     textBox2.Text = Convert.ToString(finalCost) + " р";
+                    textBox2.ForeColor = Color.Blue;
                     button1.Enabled = true;
 
                 }
@@ -569,8 +570,12 @@ namespace CarSharing
                 Int32 idTrip = (Int32)(cmd3).ExecuteScalar();
                 Program.idTrip = idTrip;
                 this.Close();
+                this.Size = new Size(0, 0);
+                this.CenterToScreen();
                 f16 = new Form16();
                 f16.ShowDialog();
+                this.Size = new Size(1097, 678);
+                this.CenterToScreen();
             }
             catch(Exception ex)
             {

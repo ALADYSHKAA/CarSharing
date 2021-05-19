@@ -39,6 +39,7 @@ namespace CarSharing
             StreamReader streamReader1;
             logger = LogManager.GetCurrentClassLogger();
             cm = new CurrentMethod();
+            this.Text = "Главное меню";
             if (System.IO.File.Exists("ServerName.txt") && System.IO.File.Exists("DataBaseName.txt"))
             {
                 string path = "ServerName.txt";
@@ -48,9 +49,9 @@ namespace CarSharing
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        MessageBox.Show(line);
+                       
                         Program.serverName = line;
-                        MessageBox.Show(Program.serverName);
+                        
                     }
                 }
                 using (StreamReader sr = new StreamReader(path1, System.Text.Encoding.Default))
@@ -58,9 +59,9 @@ namespace CarSharing
                     string line1;
                     while ((line1 = sr.ReadLine()) != null)
                     {
-                        MessageBox.Show(line1);
+                        
                         Program.bdName = line1;
-                        MessageBox.Show(Program.bdName);
+                        
                     }
                 }
                 try
@@ -100,7 +101,7 @@ namespace CarSharing
             if (Program.adminOrUser == false)
             {
                 button3.Visible = false;
-                button6.Visible = false;
+                button6.Enabled = false;
             }
             if(Program.adminOrUser == true)
             {
@@ -113,7 +114,7 @@ namespace CarSharing
             if(Program.confirmUserOrNo == true)
             {
                 button3.Visible = false;
-                button6.Visible = false;
+                button6.Enabled = false;
                 button1.Enabled = false;
             }
 
@@ -178,10 +179,11 @@ namespace CarSharing
             string v = cm.GetCurrentMethod();
             logger.Info(v);
             this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f17 = new Form17();
             f17.ShowDialog();
             this.Size = new Size(1070, 769);
-            
+            this.CenterToScreen();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -189,11 +191,13 @@ namespace CarSharing
             string v = cm.GetCurrentMethod();
             logger.Info(v);
             this.Size = new Size(0, 0);
+            this.CenterToScreen();
             Form5 f5 = new Form5();
             f5.ShowDialog();
             Form1_Load_1(sender, e);
             this.Size = new Size(1070, 769);
-            
+            this.CenterToScreen();
+
 
 
         }
@@ -244,7 +248,7 @@ namespace CarSharing
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               // MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
             }
@@ -290,9 +294,11 @@ namespace CarSharing
             string v = cm.GetCurrentMethod();
             logger.Info(v);
             this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f15 = new Form15();
             f15.ShowDialog();
             this.Size = new Size(1070, 769);
+            this.CenterToScreen();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -300,6 +306,16 @@ namespace CarSharing
             string v = cm.GetCurrentMethod();
             logger.Info(v);
             Application.Restart();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

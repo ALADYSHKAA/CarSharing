@@ -36,6 +36,8 @@ namespace CarSharing
             button3.Enabled = false;
             textBox5.UseSystemPasswordChar = true;
             textBox8.UseSystemPasswordChar = true;
+            checkBox1.Enabled = false;
+            checkBox2.Enabled = false;
         }
 
         
@@ -119,7 +121,7 @@ namespace CarSharing
                     insertValueMobilePhone);
                     SqlCommand insNewUser = new SqlCommand(sqlInsertNewUser, con);
                     insNewUser.ExecuteNonQuery();
-                    MessageBox.Show("Успешно");
+                  
                     textBox1.Enabled = false;
                     textBox2.Enabled = false;
                     textBox3.Enabled = false;
@@ -137,6 +139,7 @@ namespace CarSharing
                     textBox5.Enabled = true;
                     checkInsert = false;
                     closing = false;
+                    checkBox2.Enabled = true;
 
                 }
             }
@@ -203,7 +206,7 @@ namespace CarSharing
                 string idUserSelect = "SELECT IdUser FROM Polzovatel Where Email = '" + insertValueEmail + " '";
                 SqlCommand idUser = new SqlCommand(idUserSelect, con);
                 Int32 idUserInt = (Int32)(idUser).ExecuteScalar();
-                MessageBox.Show(Convert.ToString(idUserInt));
+               
 
                 String insertValueLogin = textBox9.Text;
                 String insertValuePassword = textBox8.Text;
@@ -235,12 +238,14 @@ namespace CarSharing
                         insertValuePassword, idUserInt);
                     SqlCommand insNewAuthDate = new SqlCommand(sqlInsertNewAuthDate, con);
                     insNewAuthDate.ExecuteNonQuery();
-                    MessageBox.Show("Успешно");
+                   
                     textBox9.Enabled = false;
                     textBox8.Enabled = false;
                     button4.Enabled = false;
 
                     textBox5.Enabled = false;
+                    checkBox1.Enabled = true;
+                    checkBox2.Enabled = false;
                 }
             }
             catch(Exception ex)
@@ -274,10 +279,10 @@ namespace CarSharing
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 if (ofd.ShowDialog(this) == DialogResult.OK)
                     pictureBox1.Image = Image.FromFile(ofd.FileName);
-                MessageBox.Show(ofd.FileName);
+                ;
                 if (ofd.FileName == "")
                 {
-                    MessageBox.Show("Фотография не выбрана");
+                    MessageBox.Show("Фотография не выбрана", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 con = new SqlConnection(connectionString);
@@ -286,12 +291,12 @@ namespace CarSharing
                 string idUserSelect = "SELECT IdUser FROM Polzovatel Where Email = '" + insertValueEmail + " '";
                 SqlCommand idUser = new SqlCommand(idUserSelect, con);
                 Int32 idUserInt = (Int32)(idUser).ExecuteScalar();
-                MessageBox.Show(Convert.ToString(idUserInt));
+                
                 String insertValueFileName = ofd.FileName;
                 string sqlInsertPhotoPassporta = string.Format("INSERT INTO Photos (FotoOfPassport, idUser)  VALUES ('{0}', {1})", insertValueFileName, idUserInt);
                 SqlCommand insNewAuthDate = new SqlCommand(sqlInsertPhotoPassporta, con);
                 insNewAuthDate.ExecuteNonQuery();
-                MessageBox.Show("Успешно");
+                
                 button5.Enabled = false;
                 button6.Enabled = true;
             }
@@ -316,7 +321,7 @@ namespace CarSharing
                     pictureBox2.Image = Image.FromFile(ofd.FileName);
                 if (ofd.FileName == "")
                 {
-                    MessageBox.Show("Фотография не выбрана");
+                    MessageBox.Show("Фотография не выбрана", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 con = new SqlConnection(connectionString);
@@ -325,12 +330,12 @@ namespace CarSharing
                 string idUserSelect = "SELECT IdUser FROM Polzovatel Where Email = '" + insertValueEmail + " '";
                 SqlCommand idUser = new SqlCommand(idUserSelect, con);
                 Int32 idUserInt = (Int32)(idUser).ExecuteScalar();
-                MessageBox.Show(Convert.ToString(idUserInt));
+                
                 String insertValueFileName = ofd.FileName;
                 string sqlInsertPhotoPassporta = string.Format("UPDATE Photos SET FotoOfDriverLicense = '{0}' WHERE idUser = {1}", insertValueFileName, idUserInt);
                 SqlCommand insNewAuthDate = new SqlCommand(sqlInsertPhotoPassporta, con);
                 insNewAuthDate.ExecuteNonQuery();
-                MessageBox.Show("Успешно");
+                
                 button6.Enabled = false;
                 button3.Enabled = true;
             }
@@ -397,7 +402,7 @@ namespace CarSharing
                     pictureBox3.Image = Image.FromFile(ofd.FileName);
                 if (ofd.FileName == "")
                 {
-                    MessageBox.Show("Фотография не выбрана");
+                    MessageBox.Show("Фотография не выбрана", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 con = new SqlConnection(connectionString);
@@ -406,15 +411,16 @@ namespace CarSharing
                 string idUserSelect = "SELECT IdUser FROM Polzovatel Where Email = '" + insertValueEmail + " '";
                 SqlCommand idUser = new SqlCommand(idUserSelect, con);
                 Int32 idUserInt = (Int32)(idUser).ExecuteScalar();
-                MessageBox.Show(Convert.ToString(idUserInt));
+               
                 String insertValueFileName = ofd.FileName;
                 string sqlInsertPhotoPassporta = string.Format("UPDATE Photos SET FotoOfFace = '{0}' WHERE idUser = {1}", insertValueFileName, idUserInt);
                 SqlCommand insNewAuthDate = new SqlCommand(sqlInsertPhotoPassporta, con);
                 insNewAuthDate.ExecuteNonQuery();
-                MessageBox.Show("Успешно");
+                MessageBox.Show("Спасибо за регистрацию, проверка вашей заявки займет от 1 часа до нескольких дней.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 button3.Enabled = false;
                 checkInsert = true;
                 closing = true;
+                this.Close();
             }
             catch(Exception ex)
             {

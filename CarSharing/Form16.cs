@@ -65,6 +65,7 @@ namespace CarSharing
             {
                 richTextBox1.Enabled = true;
                 button1.Enabled = true;
+                richTextBox1.Text = "";
 
             }
             if (checkBox1.CheckState == CheckState.Unchecked)
@@ -93,7 +94,9 @@ namespace CarSharing
                     con.Close();
                     checkBox1.CheckState = CheckState.Unchecked;
                     checkBox1.Enabled = false;
+                    richTextBox1.Enabled = false;
                     MessageBox.Show("Спасибо за Ваш отзыв, мы обязательно прислушаемся к Вашему мнению!", "Отзыв", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
                 }
                 else if (richTextBox1.Text.Length < 2)
                 {
@@ -124,6 +127,9 @@ namespace CarSharing
                 textBox2.Enabled = true;
                 richTextBox3.Enabled = true;
                 button3.Enabled = true;
+                richTextBox3.Text = "";
+                textBox2.Text = "";
+
 
             }
             if (checkBox2.CheckState == CheckState.Unchecked)
@@ -144,11 +150,13 @@ namespace CarSharing
                 if (textBox2.Text.Length == 0)
                 {
                     MessageBox.Show("Краткое описание не может быть пустым", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
                 if (richTextBox3.Text.Length == 0)
                 {
                     MessageBox.Show("Полное описание не может быть пустым", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
                 String insertValueKratOpic = textBox2.Text;
                 String insertValuePolnoeOpicanie = richTextBox3.Text;
@@ -178,6 +186,7 @@ namespace CarSharing
                 richTextBox3.Text = "";
                 checkBox2.Enabled = false;
                 checkBox3.Enabled = true;
+                
             }
             catch(Exception ex)
             {
@@ -199,6 +208,8 @@ namespace CarSharing
             logger.Info(v);
             if (checkBox3.CheckState == CheckState.Checked)
             {
+                richTextBox5.Text = "";
+                textBox3.Text = "";
                 textBox3.Enabled = true;
                 richTextBox5.Enabled = true;
                 button4.Enabled = true;
@@ -227,11 +238,13 @@ namespace CarSharing
                 if (textBox3.Text.Length == 0)
                 {
                     MessageBox.Show("Краткое описание не может быть пустым", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
                 if (richTextBox5.Text.Length == 0)
                 {
                     MessageBox.Show("Полное описание не может быть пустым", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
                 String insertValueKratOpic = textBox3.Text;
@@ -253,12 +266,18 @@ namespace CarSharing
                 richTextBox5.Text = "";
                 checkBox2.Enabled = false;
                 checkBox3.Enabled = false;
+                this.Close();
             }
             catch(Exception ex)
             {
-               
+                string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

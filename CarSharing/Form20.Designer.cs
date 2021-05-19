@@ -357,7 +357,7 @@ namespace CarSharing
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form20";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form20";
+            this.Text = "Происшествия";
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();

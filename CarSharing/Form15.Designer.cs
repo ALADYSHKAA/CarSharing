@@ -30,9 +30,9 @@ namespace CarSharing
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +43,18 @@ namespace CarSharing
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.IdAvto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Марка = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column121 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12121 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column163453 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1865 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column146543 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1534 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.роы42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column165465435 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,18 +69,6 @@ namespace CarSharing
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.IdAvto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Марка = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column121 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12121 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column163453 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1865 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column146543 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1534 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.роы42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column165465435 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -172,18 +172,18 @@ namespace CarSharing
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdAvto,
@@ -198,15 +198,15 @@ namespace CarSharing
             this.Column1534,
             this.роы42,
             this.Column165465435});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Location = new System.Drawing.Point(1, 244);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
@@ -215,121 +215,6 @@ namespace CarSharing
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(1080, 218);
             this.dataGridView1.TabIndex = 20;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(536, 162);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(160, 19);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Стоимость в минуту:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Blue;
-            this.label7.Location = new System.Drawing.Point(709, 162);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 19);
-            this.label7.TabIndex = 22;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 482);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(162, 19);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Дата начала поездки";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 504);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(190, 26);
-            this.dateTimePicker1.TabIndex = 24;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(229, 504);
-            this.textBox1.MaxLength = 4;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 26);
-            this.textBox1.TabIndex = 25;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(202, 482);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(0, 19);
-            this.label10.TabIndex = 26;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(911, 504);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 26);
-            this.textBox2.TabIndex = 27;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(730, 508);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(162, 19);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "Итоговая стоимость:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(227, 600);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 19);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "label12";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(897, 595);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 29);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Совершить поездку";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 595);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 29);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "Выход";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(33, 536);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(128, 23);
-            this.checkBox1.TabIndex = 32;
-            this.checkBox1.Text = "Текущая дата";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // IdAvto
             // 
@@ -425,6 +310,122 @@ namespace CarSharing
             this.Column165465435.Name = "Column165465435";
             this.Column165465435.ReadOnly = true;
             this.Column165465435.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(536, 162);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 19);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Стоимость в минуту:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Blue;
+            this.label7.Location = new System.Drawing.Point(709, 162);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 19);
+            this.label7.TabIndex = 22;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 482);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(162, 19);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Дата начала поездки";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 504);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(190, 26);
+            this.dateTimePicker1.TabIndex = 24;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(229, 504);
+            this.textBox1.MaxLength = 4;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(118, 26);
+            this.textBox1.TabIndex = 25;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(202, 482);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 19);
+            this.label10.TabIndex = 26;
+            // 
+            // textBox2
+            // 
+            this.textBox2.ForeColor = System.Drawing.Color.Blue;
+            this.textBox2.Location = new System.Drawing.Point(911, 504);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(158, 26);
+            this.textBox2.TabIndex = 27;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(730, 508);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(162, 19);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Итоговая стоимость:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(227, 600);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 19);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "label12";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(897, 595);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(172, 29);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Совершить поездку";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 595);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(84, 29);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "Выход";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(33, 536);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(128, 23);
+            this.checkBox1.TabIndex = 32;
+            this.checkBox1.Text = "Текущая дата";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // Form15
             // 

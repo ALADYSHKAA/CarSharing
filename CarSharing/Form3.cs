@@ -44,8 +44,12 @@ namespace CarSharing
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f4 = new Form4();
             f4.ShowDialog();
+            this.Size = new Size(770, 415);
+            this.CenterToScreen();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,13 +69,12 @@ namespace CarSharing
                     string idAdminSelect = "SELECT idAdmin FROM AutDate Where Login = '" + insertValueLogin + "' AND Password = '" + insertValuePass + " '";
                     SqlCommand idAdmin = new SqlCommand(idAdminSelect, con);
                     Int32 idAdminInt = (Int32)(idAdmin).ExecuteScalar();
-                    MessageBox.Show(Convert.ToString(idAdminInt));
+                   
 
                     string kodAdminSelect = "SELECT idAdmin FROM Admins Where KodAdmin = '" + insertValueKod + " '";
                     SqlCommand kodAdmin = new SqlCommand(kodAdminSelect, con);
                     Int32 kodAdminInt = (Int32)(kodAdmin).ExecuteScalar();
-                    MessageBox.Show(Convert.ToString(kodAdminInt));
-                    MessageBox.Show("Успешно");
+                   
                     Program.adminOrUser = true;
                     closing = false;
                     this.Close();
@@ -101,7 +104,7 @@ namespace CarSharing
                     Program.idUser = idUserInt;
                     if(userStatus == true)
                     {
-                        MessageBox.Show("еее роцк");
+                        
                         Program.adminOrUser = false;
                         closing = false;
                         Program.idUser = idUserInt;

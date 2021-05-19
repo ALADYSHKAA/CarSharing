@@ -154,9 +154,14 @@ namespace CarSharing
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+
             Program.getIdTrip = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f19 = new Form19();
             f19.ShowDialog();
+            this.Size = new Size(1233, 686);
+            this.CenterToScreen();
 
         }
     }

@@ -93,6 +93,7 @@ namespace CarSharing
 
                 string v = cm.GetCurrentMethod();
                 logger.Info(v);
+                this.Name = "Администрирование";
                 con = new SqlConnection(connectionString);
                 con.Open();
 
@@ -215,9 +216,13 @@ namespace CarSharing
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f6 = new Form6();
             f6.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
 
         }
 
@@ -235,63 +240,91 @@ namespace CarSharing
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f7 = new Form7();
             f7.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
         private void автомобилиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f10 = new Form10();
             f10.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
         private void тарифыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f12 = new Form12();
             f12.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
         private void классыАвтомобилейToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f13 = new Form13();
             f13.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
         private void новостиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f14 = new Form14();
             f14.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
         private void поездкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f18 = new Form18();
             f18.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
         private void происшествияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f20 = new Form20();
             f20.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
 
@@ -299,9 +332,13 @@ namespace CarSharing
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f21 = new Form21();
             f21.ShowDialog();
             Form5_Load(sender, e);
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
         }
 
         private void panel1_Paint_1(object sender, PaintEventArgs e)
@@ -318,8 +355,12 @@ namespace CarSharing
         {
             string v = cm.GetCurrentMethod();
             logger.Info(v);
+            this.Size = new Size(0, 0);
+            this.CenterToScreen();
             f22 = new Form22();
             f22.ShowDialog();
+            this.Size = new Size(962, 474);
+            this.CenterToScreen();
 
         }
     }

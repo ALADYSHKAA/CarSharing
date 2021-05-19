@@ -271,10 +271,10 @@ namespace CarSharing
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form19";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form19";
+            this.Text = "Подробная информация";
             this.Load += new System.EventHandler(this.Form19_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

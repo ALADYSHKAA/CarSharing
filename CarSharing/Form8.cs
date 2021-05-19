@@ -248,6 +248,8 @@ namespace CarSharing
                     con.Close();
                     richTextBox1.Text = "";
                     Form8_Load(sender, e);
+                    button2.Text = "Заблокировать пользователя";
+
                 }
                 else if (button2.Text == "Заблокировать пользователя")
                 {
@@ -259,12 +261,12 @@ namespace CarSharing
                         SqlCommand updUserStatusSql = new SqlCommand(updUserStatus, con);
                         updUserStatusSql.ExecuteNonQuery();
                         con.Close();
+                    button2.Text = "Подтвердить пользователя";
 
 
 
 
 
-                    
                 }
 
             }

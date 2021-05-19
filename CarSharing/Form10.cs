@@ -345,8 +345,12 @@ namespace CarSharing
                 if (checkAvto == true)
                 {
                     Program.getIdAvto = Convert.ToString(dataGridView1.CurrentRow.Cells[0].Value);
+                    this.Size = new Size(0, 0);
+                    this.CenterToScreen();
                     f11 = new Form11();
                     f11.ShowDialog();
+                    this.Size = new Size(1392, 879);
+                    this.CenterToScreen();
                     GetData("select * from ViewAvto");
 
                 }
