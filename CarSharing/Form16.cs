@@ -256,7 +256,7 @@ namespace CarSharing
             }
             catch(Exception ex)
             {
-               
+                string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
             }
         }
