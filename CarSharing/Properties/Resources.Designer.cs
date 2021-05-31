@@ -63,6 +63,16 @@ namespace CarSharing.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _181006151955_VideoID_man {
+            get {
+                object obj = ResourceManager.GetObject("181006151955_VideoID-man", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap crossflat_105968 {
             get {
                 object obj = ResourceManager.GetObject("crossflat_105968", resourceCulture);
@@ -143,6 +153,28 @@ namespace CarSharing.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap passport_open_id_document_with_male_photo_portrait_and_blank_space_for_immigration_visa_stamps_vector_template_53562_11956 {
+            get {
+                object obj = ResourceManager.GetObject("passport-open-id-document-with-male-photo-portrait-and-blank-space-for-immigratio" +
+                        "n-visa-stamps-vector-template_53562-11956", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap passport_open_id_document_with_male_photo_portrait_and_blank_space_for_immigration_visa_stamps_vector_template_53562_119561 {
+            get {
+                object obj = ResourceManager.GetObject("passport-open-id-document-with-male-photo-portrait-and-blank-space-for-immigratio" +
+                        "n-visa-stamps-vector-template_53562-119561", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pencilflat_106027 {
             get {
                 object obj = ResourceManager.GetObject("pencilflat_106027", resourceCulture);
@@ -156,6 +188,26 @@ namespace CarSharing.Properties {
         internal static System.Drawing.Bitmap plusflat_106003 {
             get {
                 object obj = ResourceManager.GetObject("plusflat_106003", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unnamed {
+            get {
+                object obj = ResourceManager.GetObject("unnamed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unnamed__1_ {
+            get {
+                object obj = ResourceManager.GetObject("unnamed (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

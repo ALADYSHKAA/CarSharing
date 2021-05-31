@@ -363,5 +363,15 @@ namespace CarSharing
             this.CenterToScreen();
 
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -52,6 +52,7 @@ namespace CarSharing
             this.label23 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@ namespace CarSharing
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -218,10 +218,11 @@ namespace CarSharing
             // label28
             // 
             this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label28.Location = new System.Drawing.Point(321, 324);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(60, 19);
+            this.label28.Size = new System.Drawing.Size(75, 22);
             this.label28.TabIndex = 38;
             this.label28.Text = "label28";
             // 
@@ -239,10 +240,11 @@ namespace CarSharing
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
-            this.label26.Location = new System.Drawing.Point(672, 292);
+            this.label26.Location = new System.Drawing.Point(735, 292);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(60, 19);
+            this.label26.Size = new System.Drawing.Size(75, 22);
             this.label26.TabIndex = 36;
             this.label26.Text = "label26";
             // 
@@ -250,7 +252,7 @@ namespace CarSharing
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
-            this.label27.Location = new System.Drawing.Point(532, 292);
+            this.label27.Location = new System.Drawing.Point(595, 292);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(133, 38);
@@ -260,10 +262,11 @@ namespace CarSharing
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label24.Location = new System.Drawing.Point(225, 292);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(60, 19);
+            this.label24.Size = new System.Drawing.Size(75, 22);
             this.label24.TabIndex = 34;
             this.label24.Text = "label24";
             // 
@@ -281,10 +284,11 @@ namespace CarSharing
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
-            this.label22.Location = new System.Drawing.Point(567, 261);
+            this.label22.Location = new System.Drawing.Point(639, 261);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(60, 19);
+            this.label22.Size = new System.Drawing.Size(75, 22);
             this.label22.TabIndex = 32;
             this.label22.Text = "label22";
             // 
@@ -292,7 +296,7 @@ namespace CarSharing
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
-            this.label23.Location = new System.Drawing.Point(427, 261);
+            this.label23.Location = new System.Drawing.Point(499, 261);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(133, 38);
@@ -302,10 +306,11 @@ namespace CarSharing
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label20.Location = new System.Drawing.Point(268, 261);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(60, 19);
+            this.label20.Size = new System.Drawing.Size(75, 22);
             this.label20.TabIndex = 30;
             this.label20.Text = "label20";
             // 
@@ -319,6 +324,17 @@ namespace CarSharing
             this.label21.Size = new System.Drawing.Size(249, 19);
             this.label21.TabIndex = 29;
             this.label21.Text = "Самый популярный автомобиль:\r\n";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
+            this.label18.Location = new System.Drawing.Point(262, 232);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 22);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "label18";
             // 
             // label19
             // 
@@ -334,10 +350,11 @@ namespace CarSharing
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label16.Location = new System.Drawing.Point(250, 203);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(60, 19);
+            this.label16.Size = new System.Drawing.Size(75, 22);
             this.label16.TabIndex = 26;
             this.label16.Text = "label16";
             // 
@@ -355,10 +372,11 @@ namespace CarSharing
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
-            this.label12.Location = new System.Drawing.Point(403, 171);
+            this.label12.Location = new System.Drawing.Point(404, 171);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 19);
+            this.label12.Size = new System.Drawing.Size(75, 22);
             this.label12.TabIndex = 24;
             this.label12.Text = "label12";
             // 
@@ -366,7 +384,7 @@ namespace CarSharing
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
-            this.label13.Location = new System.Drawing.Point(224, 171);
+            this.label13.Location = new System.Drawing.Point(225, 171);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(172, 19);
@@ -376,10 +394,11 @@ namespace CarSharing
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label14.Location = new System.Drawing.Point(186, 171);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 19);
+            this.label14.Size = new System.Drawing.Size(75, 22);
             this.label14.TabIndex = 22;
             this.label14.Text = "label14";
             // 
@@ -397,31 +416,35 @@ namespace CarSharing
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
-            this.label11.Location = new System.Drawing.Point(352, 137);
+            this.label11.Location = new System.Drawing.Point(341, 137);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 19);
+            this.label11.Size = new System.Drawing.Size(75, 22);
             this.label11.TabIndex = 20;
             this.label11.Text = "label11";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(245)))), ((int)(((byte)(213)))));
-            this.label10.Location = new System.Drawing.Point(211, 137);
+            this.label10.Location = new System.Drawing.Point(200, 137);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(134, 19);
             this.label10.TabIndex = 19;
             this.label10.Text = "из них исправны:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label8.Location = new System.Drawing.Point(174, 137);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 19);
+            this.label8.Size = new System.Drawing.Size(64, 22);
             this.label8.TabIndex = 18;
             this.label8.Text = "label8";
             // 
@@ -439,10 +462,11 @@ namespace CarSharing
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label6.Location = new System.Drawing.Point(322, 107);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 19);
+            this.label6.Size = new System.Drawing.Size(64, 22);
             this.label6.TabIndex = 16;
             this.label6.Text = "label6";
             // 
@@ -460,10 +484,11 @@ namespace CarSharing
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label4.Location = new System.Drawing.Point(193, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 19);
+            this.label4.Size = new System.Drawing.Size(64, 22);
             this.label4.TabIndex = 14;
             this.label4.Text = "label4";
             // 
@@ -481,10 +506,11 @@ namespace CarSharing
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
             this.label3.Location = new System.Drawing.Point(136, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 19);
+            this.label3.Size = new System.Drawing.Size(64, 22);
             this.label3.TabIndex = 12;
             this.label3.Text = "label3";
             // 
@@ -512,21 +538,11 @@ namespace CarSharing
             this.label1.TabIndex = 0;
             this.label1.Text = "Всего поездок:";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(210)))), ((int)(((byte)(157)))));
-            this.label18.Location = new System.Drawing.Point(262, 232);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 19);
-            this.label18.TabIndex = 28;
-            this.label18.Text = "label18";
-            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 418);
+            this.ClientSize = new System.Drawing.Size(946, 420);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

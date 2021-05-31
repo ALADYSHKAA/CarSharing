@@ -25,6 +25,7 @@ namespace CarSharing
             InitializeComponent();
             logger = LogManager.GetCurrentClassLogger();
             cm = new CurrentMethod();
+            
             if (Program.connectionError == true) 
             {
                 label4.Location = new Point(180, 356);
@@ -70,6 +71,7 @@ namespace CarSharing
             string text1 = textBox2.Text;
             try
             {
+                
                 using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
                 {
                     sw.WriteLine(text);
@@ -84,7 +86,7 @@ namespace CarSharing
             }
             catch (Exception ex)
             {
-               
+                
                 MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);
@@ -93,11 +95,12 @@ namespace CarSharing
        
             Program.serverName = textBox1.Text;
             Program.bdName = textBox2.Text;
-
+            
             String connectionString = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
                   "Integrated Security=True";
             try
             {
+               
                 con = new SqlConnection(connectionString);
                 con.Open();
                 string query = "SELECT * FROM Strahovka";
@@ -109,6 +112,7 @@ namespace CarSharing
             }
             catch(Exception ex)
             {
+                
                 label4.Visible = true;
                 string method = cm.GetCurrentMethod();
                 logger.Error(ex.ToString() + method);

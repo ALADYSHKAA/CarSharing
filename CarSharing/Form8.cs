@@ -215,6 +215,7 @@ namespace CarSharing
 
         private void label27_Click(object sender, EventArgs e)
         {
+           
             string v = cm.GetCurrentMethod();
             logger.Info(v);
             Program.fotoUser = false;
