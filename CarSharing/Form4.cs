@@ -38,6 +38,7 @@ namespace CarSharing
             textBox8.UseSystemPasswordChar = true;
             checkBox1.Enabled = false;
             checkBox2.Enabled = false;
+            dateTimePicker1.MinDate = DateTime.Now.AddYears(-18);
         }
 
         

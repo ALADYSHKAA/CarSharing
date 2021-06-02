@@ -107,6 +107,8 @@ namespace CarSharing
                 SqlCommand command = new SqlCommand(query, con);
                 SqlDataReader reader = command.ExecuteReader();
                 closing = false;
+                //CarSharing.Properties.Settings.Default.DiplomConnectionString = connectionString;
+                MessageBox.Show(Properties.Settings.Default.DiplomConnectionString.ToString());
                 this.Close();
 
             }

@@ -29,6 +29,7 @@ namespace CarSharing
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -40,6 +41,8 @@ namespace CarSharing
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.dogovorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+           
             this.SuspendLayout();
             // 
             // label1
@@ -158,6 +161,18 @@ namespace CarSharing
             this.label5.TabIndex = 10;
             this.label5.Text = "Неверный Логин или Пароль";
             // 
+            // dogovorBindingSource
+            // 
+            this.dogovorBindingSource.DataMember = "Dogovor";
+           
+            // 
+            // iTCenterDataSet
+            // 
+         
+            // dogovorTableAdapter
+            // 
+          
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -184,6 +199,7 @@ namespace CarSharing
             this.Text = "Авторизация";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
             this.Load += new System.EventHandler(this.Form3_Load);
+       
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +218,8 @@ namespace CarSharing
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+       
+        private System.Windows.Forms.BindingSource dogovorBindingSource;
+       
     }
 }

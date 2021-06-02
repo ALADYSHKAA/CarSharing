@@ -136,6 +136,8 @@ namespace CarSharing
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "iTCenterDataSet.Dogovor". При необходимости она может быть перемещена или удалена.
+         
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
 
         }

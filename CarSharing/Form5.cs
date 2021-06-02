@@ -353,6 +353,7 @@ namespace CarSharing
 
         private void руководствоToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             string v = cm.GetCurrentMethod();
             logger.Info(v);
             this.Size = new Size(0, 0);
