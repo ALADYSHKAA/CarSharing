@@ -32,6 +32,10 @@ namespace CarSharing.Properties {
             get {
                 return ((string)(this["DiplomConnectionString"]));
             }
+            set
+            {
+                this["DiplomConnectionString"] = value;
+            }
         }
     }
 }

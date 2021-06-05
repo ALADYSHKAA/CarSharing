@@ -33,6 +33,7 @@ namespace CarSharing
             textBox3.Enabled = false;
             richTextBox5.Enabled = false;
             button4.Enabled = false;
+            button3.Enabled = false;
         }
 
         private void Form16_Load(object sender, EventArgs e)

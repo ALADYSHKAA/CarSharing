@@ -362,6 +362,7 @@ namespace CarSharing
             f22.ShowDialog();
             this.Size = new Size(962, 474);
             this.CenterToScreen();
+            this.Cursor = System.Windows.Forms.Cursors.Default;
 
         }
 

@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -139,6 +140,12 @@ namespace CarSharing
             // TODO: данная строка кода позволяет загрузить данные в таблицу "iTCenterDataSet.Dogovor". При необходимости она может быть перемещена или удалена.
          
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
+            bool isRole = IsRunAsAdmin();
+            if (isRole is false)
+            {
+                MessageBox.Show("В процессе работы данного приложения происходит чтение и запись файлов.\r Для корректной работы, пожалуйста запустите программу от имени администратора.\r Приложение будет закрыто.", "Не обнаружены права администратора", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
 
         }
 
@@ -191,6 +198,12 @@ namespace CarSharing
             }
         }
 
+        internal bool IsRunAsAdmin()
+        {
+            WindowsIdentity id = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(id);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
             string v = cm.GetCurrentMethod();

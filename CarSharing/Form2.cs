@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -46,8 +47,20 @@ namespace CarSharing
             MessageBox.Show("Успешно");
         }
 
+        internal bool IsRunAsAdmin()
+        {
+            WindowsIdentity id = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(id);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
         private void Form2_Load(object sender, EventArgs e)
         {
+            bool isRole = IsRunAsAdmin();
+            if (isRole is false)
+            {
+                MessageBox.Show("В процессе работы данного приложения происходит чтение и запись файлов.\r Для корректной работы, пожалуйста запустите программу от имени администратора.\r Приложение будет закрыто.", "Не обнаружены права администратора", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
             string v = cm.GetCurrentMethod();
             logger.Info(v);
             textBox1.Text = System.Net.Dns.GetHostName() + "\\SQLEXPRESS;";
@@ -107,8 +120,8 @@ namespace CarSharing
                 SqlCommand command = new SqlCommand(query, con);
                 SqlDataReader reader = command.ExecuteReader();
                 closing = false;
-                //CarSharing.Properties.Settings.Default.DiplomConnectionString = connectionString;
-                MessageBox.Show(Properties.Settings.Default.DiplomConnectionString.ToString());
+                CarSharing.Properties.Settings.Default.DiplomConnectionString = connectionString;
+                
                 this.Close();
 
             }

@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,7 +32,7 @@ namespace CarSharing
         String connectionString = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
                   "Integrated Security=True";
 
-
+       
 
         public Form1()
         {
@@ -40,6 +41,7 @@ namespace CarSharing
             logger = LogManager.GetCurrentClassLogger();
             cm = new CurrentMethod();
             this.Text = "Главное меню";
+           
             if (System.IO.File.Exists("ServerName.txt") && System.IO.File.Exists("DataBaseName.txt"))
             {
                 string path = "ServerName.txt";
@@ -127,12 +129,13 @@ namespace CarSharing
         {
             try
             {
+                
                 String connectionString1 = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
                      "Integrated Security=True";
 
                 con1 = new SqlConnection(connectionString1);
                 con1.Open();
-
+                CarSharing.Properties.Settings.Default.DiplomConnectionString = connectionString1;
                 string firstNewSelect = "SELECT TOP (1)  KratkoeOpicanie  FROM News ORDER BY idNews DESC";
                 SqlCommand firstNew = new SqlCommand(firstNewSelect, con);
                 String firstNewString = (String)(firstNew).ExecuteScalar();
@@ -213,11 +216,13 @@ namespace CarSharing
         {
             try
             {
+               
+
                 string v = cm.GetCurrentMethod();
                 logger.Info(v);
                 String connectionString1 = @"Data Source=" + Program.serverName + "Initial Catalog=" + Program.bdName + ";" +
                      "Integrated Security=True";
-
+                CarSharing.Properties.Settings.Default.DiplomConnectionString = connectionString1;
                 con1 = new SqlConnection(connectionString1);
                 con1.Open();
 
